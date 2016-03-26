@@ -1,0 +1,67 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+
+
+{% block title %}
+	Accueil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+	 <div class="row">
+		<div class="col-sm-6 info">
+			<h2>Infos</h2>
+			<div>
+			{# Liste des infos
+				<ul>
+				  {% for info in liste_infos %}
+					<li>{{ info.item }}</li>
+				  {% else %}
+					<li>Pas d'info trouvé.</li>
+				  {% endfor %}
+				</ul> #}
+				
+				{# Exemple #}
+				<ul>
+					<li>Première info : Symfony c'est chouette, mangez-en !</li>
+					<li>Deuxième info : Par contre, sacrée courbe d'apprentissage !</li>
+					<li>Troisième info : Mais, haut les coeurs !</li>
+					<li>Quatième info : FARYM vaincra :D</li>
+				</ul> 
+				
+			</div>
+
+		</div>
+		
+		
+		
+		<div class="col-sm-6 actu">
+			<h2>Actualités</h2>
+			<div>
+			{# Liste des actualités #}
+				<ul>
+				
+				  {% for activite in listActivite %}
+					<li>{{ activite.contenu }}</li>
+				  {% else %}
+					<li>Pas d'actualité trouvé.</li>
+				  {% endfor %}
+				</ul>
+				
+				{# Exemple 
+				<ul>
+					<li>Le 24/03/16 : Juste une mise au point à 14h</lih>
+					<li>Le 25/03/16 : C#, ça pique !</li>
+					<li>Le 26/03/16 : Le repos des braves</li>
+					<li>Le 28/03/16 : La nuit blanche des braves</li>
+				</ul> #}
+			</div>
+		</div>		
+	</div>
+	
+	<p><img src="localhost/Ramassage/tapis_volant.jpg" />image</p>
+
+ 
+
+{% endblock %}

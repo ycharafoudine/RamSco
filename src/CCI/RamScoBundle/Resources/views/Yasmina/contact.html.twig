@@ -1,0 +1,64 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Contact - {{ parent() }}
+{% endblock %}
+
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+
+	
+</style>
+{% endblock %}
+
+
+{% block body %}
+   
+	<div id="contact" class="container-fluid bg-grey">
+	  <h2 class="text-center">CONTACT</h2>
+	  <div class="row">
+		<div class="col-sm-5">
+		  <p>N'hésitez pas à nous contacter</p>
+		  <p><span class="glyphicon glyphicon-map-marker"></span> Tours 37000</p>
+		  <p><span class="glyphicon glyphicon-phone"></span> +33 007 36 15</p>
+		  <p><span class="glyphicon glyphicon-envelope"></span> contacte@farym.com</p>    
+		</div>
+		<div class="col-sm-7 slideanim">
+		  <div class="row">
+			<div class="col-sm-6 form-group">
+			  <input class="form-control" id="Nom" name="Nom" placeholder="Nom" type="text" required>
+			</div>
+			<div class="col-sm-6 form-group">
+			  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+			</div>
+		  </div>
+		  <textarea class="form-control" id="Message" name="Message" placeholder="Message" rows="5"></textarea><br>
+		  <div class="row">
+			<div class="col-sm-12 form-group">
+			  <button class="btn btn-default pull-right" type="submit">Envoyer</button>
+			</div>
+		  </div>  
+		</div>
+	  </div>
+	</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Devenir adhérent - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	p {padding-left:30px;}
+		
+	fieldset .enfant{
+		border-style: solid;
+		border-width: 2px;
+		border-color:#7F7F7F;
+		padding:10px;
+	}
+	
+	label::after {content: " :	";}
+
+	
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+<h2>Devenir adhérent :</h2>
+
+<p>Incrivez-vous pour devenir adhérent de l'association et inscrire vos enfants au ramassage scolaire et aux activités organisées.</p>
+
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock %}
