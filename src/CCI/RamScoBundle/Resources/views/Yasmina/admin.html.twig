@@ -11,14 +11,14 @@
 <div class="container">
 
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
+    <li><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
     <li><a data-toggle="tab" href="#participants">Gestion des participants</a></li>
-    <li><a data-toggle="tab" href="#activites">Gestion des activités</a></li>
+    <li class="active"> <a data-toggle="tab" href="#activites">Gestion des activités</a></li>
     <li><a data-toggle="tab" href="#roles">Gestion des rôles</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="adherents" class="tab-pane fade in active">
+    <div id="adherents" class="tab-pane fade ">
 		<h2>Liste des adhérents</h2>
 		<table border="1">
 		<thead>
@@ -39,7 +39,7 @@
 		
 	</div>
 	
-    <div id="participants" class="tab-pane fade">
+    <div id="participants" class="tab-pane fade ">
 		<h2>Liste des participants</h2>
 		<table border="1">
 		<thead>
@@ -62,7 +62,7 @@
 
     </div>
     
-     <div id="activites" class="tab-pane fade">
+     <div id="activites" class="tab-pane fade in active">
 		<h2>Liste des activités</h2>
 		<table border="1">
 		<thead>
@@ -75,7 +75,7 @@
 						<td> dateActivite </td>
 						<td> {{ activite.titreActivite }} </td>
 						<td> {{ activite.lieu }} </td>
-						<td> <a href="/admin/activite/edit">Modifier / Supprimer </a></td>
+						<td> <a href="/admin/activite/edit/{{ activite.id }}">Modifier / Supprimer </a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
