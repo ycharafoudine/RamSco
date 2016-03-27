@@ -95,7 +95,36 @@ return $this->render('CCIRamScoBundle:Yasmina:addactivite.html.twig',
 array('form' => $form->createView(),));
 }
 
-public function addroleAction(Request $request)
+	public function editactiviteAction(Request $request, $id=null)
+	{
+
+$message='';
+$em = $this->getDoctrine()->getManager();
+
+if (isset($id)) 
+	{$activite = $em->find('CCIRamScoBundle:Activite', $id);
+	if (!$activite){$message='Aucune activité trouvée';}}
+else{$activite = new Activite();}
+
+$form = $this->get('form.factory')->create(new ActiviteType,$activite);
+	
+if ($form->handleRequest($request)->isValid()) {
+  
+  $em->persist($activite);
+  $em->flush();
+	
+	if (isset($id)){$message='Activité modifiée avec succès !';}
+	else{$message='Activité ajoutée avec succès !';}
+  
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+}
+	
+return $this->render('CCIRamScoBundle:Yasmina:editactivite.html.twig', 
+array('form' => $form->createView(),'message'=>$message));
+}
+
+
+	public function addroleAction(Request $request)
 	{
 
 $role = new Role();

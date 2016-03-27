@@ -31,8 +31,4 @@ class ProfileType extends ProfileFormType
         ));
     }
 
-    public function getName()
-    {
-        return 'sf_web_app_fos_user_profile';
-    }
 } 

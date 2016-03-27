@@ -25,6 +25,10 @@ profil:
     path: profile
     defaults: { _controller: FOSUserBundle:Profile:show }
     
+profil_edit:
+    path: profile/editer
+    defaults: { _controller: FOSUserBundle:Profile:edit }
+    
 adherent:    
     path: adherent
     defaults: { _controller: CCIRamScoBundle:Yasmina:adherent }
@@ -60,6 +64,10 @@ role_view:
 activite_add:    
     path: admin/activite/add
     defaults: { _controller: CCIRamScoBundle:Yasmina:addactivite }
+    
+activite_edit:    
+    path: admin/activite/edit/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editactivite }
            
 activite_view:
     path: admin/activite/{id}
