@@ -1,24 +1,3 @@
-byebye_world:
-    path: byebye-world
-    defaults: { _controller: CCIRamScoBundle:Yasmina:findumonde }
-
-personne_view:
-    path: personne/{id}
-    defaults: { _controller: CCIRamScoBundle:Yasmina:view }
-    requirements : 
-        id: \d+
-
-personne_add:    
-    path: personne/add
-    defaults: { _controller: CCIRamScoBundle:Yasmina:add }
-
-
-
-
-index:
-    path: index
-    defaults: { _controller: CCIRamScoBundle:Yasmina:index }
-    
 accueil:
     path: accueil
     defaults: { _controller: CCIRamScoBundle:Yasmina:indexPerso}
@@ -53,6 +32,7 @@ adherent_liste:
 admin:
     path: admin
     defaults: { _controller: CCIRamScoBundle:Yasmina:admin }
+    
     
 participant_add:    
     path: admin/participant/add

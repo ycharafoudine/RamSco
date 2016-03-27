@@ -7,23 +7,42 @@
 
 {% block body %}
 
-	<h2>Gestion des Adhérents</h2>
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
+    <li><a data-toggle="tab" href="#participants">Gestion des participants</a></li>
+    <li><a data-toggle="tab" href="#activites">Gestion des activités</a></li>
+    <li><a data-toggle="tab" href="#roles">Gestion des rôles</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="adherents" class="tab-pane fade in active">
 		<li><a href="/admin/adherent/liste">Liste des adhérents</a></li>
 		<li><a href="/admin/adherent/edit">Supprimer un adhérent</a></li>
-
-	<h2>Gestion des Participants</h2>
-		<li><a href="/admin/adherent/liste">Liste des adhérents</a></li>
+	</div>
+	
+    <div id="participants" class="tab-pane fade in active">
 		<li><a href="/admin/participant/liste">Liste des participants</a></li>
 		<li><a href="/admin/participant/add">Ajouter un participant</a></li>
-		<li><a href="/admin/participant/edit">Supprimer un participant</a></li>
-
-<h2>Gestion des Activités</h2>
+		<li><a href="/admin/participant/edit">Supprimer un participant</a></li></div>
+    </div>
+    
+     <div id="activites" class="tab-pane fade in active">
 		<li><a href="/activites">Liste des activités</a></li>
 		<li><a href="/admin/activite/add">Planifier une activité</a></li>
 		<li><a href="/admin/activite/edit">Annuler une activité</a></li>
-		
-<h2>Gestion des Rôles</h2>
+    </div>
+    
+    <div id="roles" class="tab-pane fade in active">
 		<li><a href="/admin/role/liste">Liste des rôles</a></li>
 		<li><a href="/admin/role/add">Ajouter un rôle</a></li>
 		<li><a href="/admin/role/edit">Supprimer un rôle</a></li>
+	</div>
+    </div>
+  </div>
+  </div>
+
+		
 {% endblock %}
