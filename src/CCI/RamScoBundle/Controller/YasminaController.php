@@ -11,6 +11,7 @@ use CCI\RamScoBundle\Entity\Activite;
 use CCI\RamScoBundle\Form\ActiviteType;
 use CCI\RamScoBundle\Form\ParticipantType;
 use CCI\RamScoBundle\Form\RoleType;
+use CCI\RamScoBundle\Form\ProfileEditType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -37,6 +38,33 @@ return new Response($content);
 
     }
     
+    public function editadherentAction(Request $request, $id=null)
+	{
+
+$message='';
+$em = $this->getDoctrine()->getManager();
+
+if (isset($id)) 
+	{$personne = $em->find('CCIRamScoBundle:Personne', $id);
+	if (!$personne){$message='Aucun adhérent trouvé';}}
+else{$personne = new Personne();}
+
+$form = $this->get('form.factory')->create(new ProfileEditType, $personne);
+	
+if ($form->handleRequest($request)->isValid()) {
+  
+  $em->persist($personne);
+  $em->flush();
+	
+	if (isset($id)){$message='Adhérent modifié avec succès !';}
+	else{$message='Adhérent ajouté avec succès !';}
+  
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+}
+	
+return $this->render('CCIRamScoBundle:Yasmina:editadherent.html.twig', 
+array('form' => $form->createView(),'message'=>$message));
+}
    
 	//Page ajout d'un Participant
 	public function editparticipantAction(Request $request)

@@ -11,39 +11,39 @@
 <div class="container">
 
   <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
+    <li  class="active"><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
     <li><a data-toggle="tab" href="#participants">Gestion des participants</a></li>
-    <li class="active"> <a data-toggle="tab" href="#activites">Gestion des activités</a></li>
+    <li> <a data-toggle="tab" href="#activites">Gestion des activités</a></li>
     <li><a data-toggle="tab" href="#roles">Gestion des rôles</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="adherents" class="tab-pane fade ">
+    <div id="adherents" class="tab-pane fade in active">
 		<h2>Liste des adhérents</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th></tr>
+			<tr><th>N°</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for personne in listAdherent %}
 					<tr>
-						<td> <a href="/admin/adherent/view"> {{ personne.id }}  </a></td>
+						<td> <a href="/admin/adherent/view"> {{ personne.numAdherent }}  </a></td>
 						<td> {{ personne.nom }}</td><td> {{ personne.prenom }} </td>
 						<td> {{ personne.adresse }} </td><td> {{ personne.telephone }} </td>
-						<td> <a href="/admin/adherent/edit">Modifier / Supprimer </a></td>
+						<td> <a href="/admin/adherent/edit/{{ personne.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+						<td> <a href="/admin/adherent/remove/{{ personne.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
 		</table>
-		
-		
+		<a href="/admin/adherent/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un adhérent</a>
 	</div>
 	
-    <div id="participants" class="tab-pane fade in active">
+    <div id="participants" class="tab-pane fade ">
 		<h2>Liste des participants</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th><th>Modifier</th></tr>
+			<tr><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for participant in listParticipant %}
@@ -52,13 +52,13 @@
 						<td> {{ participant.personne.prenom }} </td>
 						<td> {{ participant.role.typeRole }} </td>
 						<td> {{ participant.activite.titreActivite }} </td>
-						<td> <a href="/admin/participant/edit/{{ participant.id }}">*</a></td>
-						<td> <a href="/admin/participant/remove/{{ participant.id }}">x</a></td>
+						<td> <a href="/admin/participant/edit/{{ participant.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+						<td> <a href="/admin/participant/remove/{{ participant.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
 		</table>
-		<a href="/admin/participant/add">Ajouter un participant</a>
+		<a href="/admin/participant/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un participant</a>
 
     </div>
     
@@ -66,7 +66,7 @@
 		<h2>Liste des activités</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Date</th><th>Titre Activité</th><th>Lieu</th></tr>
+			<tr><th>Date</th><th>Titre Activité</th><th>Lieu</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for activite in listActivite %}
@@ -74,12 +74,13 @@
 						<td> {{ activite.stringdateActivite }} </td>
 						<td> {{ activite.titreActivite }} </td>
 						<td> {{ activite.lieu }} </td>
-						<td> <a href="/admin/activite/edit/{{ activite.id }}">Modifier / Supprimer </a></td>
+						<td> <a href="/admin/activite/edit/{{ activite.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+						<td> <a href="/admin/activite/remove/{{ activite.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
 		</table>
-		<a href="/admin/activite/add">Planifier une activité</a>
+		<a href="/admin/activite/add"><span class="glyphicon glyphicon-plus"></span> Planifier une activité</a>
 		
 		
     </div>
@@ -88,19 +89,20 @@
 		<h2>Liste des rôles</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Type Rôles</th><th>Description</th></tr>
+			<tr><th>Type Rôles</th><th>Description</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for role in listRole %}
 					<tr>
 						<td> {{ role.typeRole }} </td>
 						<td> {{ role.fonction }} </td>
-						<td> <a href="/admin/role/edit/{{ role.id }}">Modifier / Supprimer </a></td>
+						<td> <a href="/admin/role/edit/{{ role.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+						<td> <a href="/admin/role/remove/{{ role.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
 		</table>
-		<a href="/admin/role/add">Ajouter un rôle</a>
+		<a href="/admin/role/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un rôle</a>
 
 	</div>
 	

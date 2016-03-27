@@ -32,12 +32,22 @@ profil_edit:
 adherent:    
     path: adherent
     defaults: { _controller: CCIRamScoBundle:Yasmina:adherent }
+    
+
 
     
 
 admin:
     path: admin/
     defaults: { _controller: CCIRamScoBundle:Yasmina:admin }
+    
+adherent_add:    
+    path: admin/adherent/add
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editadherent }
+
+adherent_edit:    
+    path: admin/adherent/edit/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editadherent }
  
     
     
