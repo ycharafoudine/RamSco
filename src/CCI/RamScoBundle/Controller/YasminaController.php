@@ -8,6 +8,7 @@ use CCI\RamScoBundle\Entity\Personne;
 use CCI\RamScoBundle\Entity\Participant;
 use CCI\RamScoBundle\Entity\Role;
 use CCI\RamScoBundle\Entity\Activite;
+use CCI\RamScoBundle\Form\ActiviteType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -71,6 +72,8 @@ array('listActivite' => $listActivite));
 return new Response($content);
 
     }
+    
+    
     
     public function listeparticipantAction()
 
@@ -200,17 +203,9 @@ array('participant' => $participant));
 	public function addactiviteAction(Request $request){
 	//Création de l'activité
 $activite = new Activite();
-
-$form = $this->get('form.factory')->createBuilder('form',$activite)
-	->add('titreActivite','text')
-	->add('theme','text')
-	->add('lieu','text')
-	->add('dateActivite','date')
-	->add('enregistrer','submit')
-	->getForm();
+$form = $this->get('form.factory')->create(new ActiviteType,$activite);
 	
-$form->handleRequest($request);
-if ($form->isValid()) {
+if ($form->handleRequest($request)->isValid()) {
   // On l'enregistre notre objet $advert dans la base de données, par exemple
   $em = $this->getDoctrine()->getManager();
   $em->persist($activite);
