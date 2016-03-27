@@ -49,7 +49,10 @@ adherent_liste:
     path: admin/adherent/liste
     defaults: { _controller: CCIRamScoBundle:Yasmina:listeadherent }
     
-    
+
+admin:
+    path: admin
+    defaults: { _controller: CCIRamScoBundle:Yasmina:admin }
     
 participant_add:    
     path: admin/participant/add

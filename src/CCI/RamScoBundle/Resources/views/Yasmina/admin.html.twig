@@ -1,0 +1,29 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Interface administrateur - {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+
+	<h2>Gestion des Adhérents</h2>
+		<li><a href="/admin/adherent/liste">Liste des adhérents</a></li>
+		<li><a href="/admin/adherent/edit">Supprimer un adhérent</a></li>
+
+	<h2>Gestion des Participants</h2>
+		<li><a href="/admin/adherent/liste">Liste des adhérents</a></li>
+		<li><a href="/admin/participant/liste">Liste des participants</a></li>
+		<li><a href="/admin/participant/add">Ajouter un participant</a></li>
+		<li><a href="/admin/participant/edit">Supprimer un participant</a></li>
+
+<h2>Gestion des Activités</h2>
+		<li><a href="/activites">Liste des activités</a></li>
+		<li><a href="/admin/activite/add">Planifier une activité</a></li>
+		<li><a href="/admin/activite/edit">Annuler une activité</a></li>
+		
+<h2>Gestion des Rôles</h2>
+		<li><a href="/admin/role/liste">Liste des rôles</a></li>
+		<li><a href="/admin/role/add">Ajouter un rôle</a></li>
+		<li><a href="/admin/role/edit">Supprimer un rôle</a></li>
+{% endblock %}

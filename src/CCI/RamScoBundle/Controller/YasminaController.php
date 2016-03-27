@@ -236,6 +236,12 @@ public function farymAction()
 {
 	return $this->render('CCIRamScoBundle:Yasmina:farym.html.twig');
     }
+
+//Zone administrateur
+public function adminAction()
+{
+	return $this->render('CCIRamScoBundle:Yasmina:admin.html.twig');
+    }
 }
 	
 	
