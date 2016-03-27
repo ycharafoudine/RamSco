@@ -1,10 +1,29 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_user_show">
-{#Pseudo#}
-    <p>Pseudo : {{ user.username }}</p>
-    
-{#Email#}
-    <p>Adresse e-mail : {{ user.email }}</p>
-    
+	<h2>Bienvenue {{ user.username }}</h2>
+		<h3>Identité</h3>
+			<p>Nom : {{ user.nom }}<br />
+			Prénom : {{ user.prenom }}<br />
+			Date de naissance : {{ user.stringdatenaissance }}<br />
+			N° d'adhérent : {{ user.numAdherent }}</p>
+		
+		
+		<h3>Informations de contact</h3>
+			<p>Téléphone : {{ user.telephone }}<br />
+			Adresse e-mail : {{ user.email }}<br />
+			Adresse : {{ user.adresse }}</p>
+		
+		<h3>Autres informations</h3>
+			<p>Date d'inscription : {{ user.stringdateinscription }}<br />
+			Permis : {{ user.permis }}<br />
+			Montant cotisation : {{ user.cotisation }}<br />
+			Montant réduction : {{ user.reduction }}<br /></p>
+		
+		<h3>Autres personnes</h3>
+			<p></p>
+			
+			<br /><br />
+Dernière connexion : {{ user.stringlastlogin }}<br />
+    <a href="/logout">Déconnexion</a>
 </div>

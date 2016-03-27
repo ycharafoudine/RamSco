@@ -1,5 +1,5 @@
 accueil:
-    path: accueil
+    path: /
     defaults: { _controller: CCIRamScoBundle:Yasmina:indexPerso}
 
 contact:
@@ -32,7 +32,7 @@ adherent:
     
 
 admin:
-    path: admin
+    path: admin/
     defaults: { _controller: CCIRamScoBundle:Yasmina:admin }
  
     

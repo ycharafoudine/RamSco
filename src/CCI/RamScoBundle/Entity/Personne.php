@@ -116,6 +116,33 @@ class Personne extends BaseUser
     {
 		return $this->nom.' '.$this->prenom;
 	}
+	
+	public function getStringDateInscription()
+    {
+		if($this->dateInscription!=null)
+			{$date = $this->dateInscription;
+			$result=$date->format('d/m/Y');}
+		else{$result = " ";}
+        return $result;
+    }
+    
+    public function getStringDateNaissance()
+    {
+		if($this->dateNaissance!=null)
+			{$date = $this->dateNaissance;
+			$result=$date->format('d/m/Y');}
+		else{$result = " ";}
+        return $result;
+    }
+    
+    public function getStringLastLogin()
+    {
+		if($this->lastLogin!=null)
+			{$date = $this->lastLogin;
+			$result=$date->format('d/m/Y H:i:s');}
+		else{$result = " ";}
+        return $result;
+    }
 
 
     /**
