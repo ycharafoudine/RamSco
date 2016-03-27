@@ -1,0 +1,19 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajout / Edition rôle - {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+  <h2>Ajout / Edition d'un rôle</h2>
+
+
+  <p>Veuillez entrer les informations concernant le nouveau rôle ou modifier celles du rôle existant :
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+  </p>
+{% endblock %}

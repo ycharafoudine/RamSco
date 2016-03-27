@@ -26,8 +26,8 @@ profil:
     defaults: { _controller: FOSUserBundle:Profile:show }
     
 profil_edit:
-    path: profile/editer
-    defaults: { _controller: FOSUserBundle:Profile:edit }
+    path: profile/edit/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editprofil }
     
 adherent:    
     path: adherent
@@ -43,31 +43,48 @@ admin:
     
 participant_add:    
     path: admin/participant/add
-    defaults: { _controller: CCIRamScoBundle:Yasmina:addparticipant }
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editparticipant }
+
+participant_edit:    
+    path: admin/participant/edit/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editparticipant }
+    requirements : 
+        id: \d+
         
 participant_view:
     path: admin/participant/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:ficheparticipant }
-
+    requirements : 
+        id: \d+
 
 
 role_add:    
     path: admin/role/add
-    defaults: { _controller: CCIRamScoBundle:Yasmina:addrole }
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editrole }
+    
+role_edit:    
+    path: admin/role/edit/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editrole }
+    requirements : 
+        id: \d+
         
 role_view:
     path: admin/role/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:ficherole }
+    requirements : 
+        id: \d+
     
     
     
 activite_add:    
     path: admin/activite/add
-    defaults: { _controller: CCIRamScoBundle:Yasmina:addactivite }
+    defaults: { _controller: CCIRamScoBundle:Yasmina:editactivite }
     
 activite_edit:    
     path: admin/activite/edit/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:editactivite }
+    requirements : 
+        id: \d+
            
 activite_view:
     path: admin/activite/{id}
