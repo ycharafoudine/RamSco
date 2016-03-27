@@ -23,21 +23,21 @@ class Participant
     
     /**
     * @ORM\OneToOne(targetEntity="CCI\RamScoBundle\Entity\Personne", cascade={"persist"})
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=false, unique=false)
   */
 
   private $Personne;
   
   /**
     * @ORM\OneToOne(targetEntity="CCI\RamScoBundle\Entity\Role", cascade={"persist"})
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=false, unique=false)
    */
 
   private $Role;
   
   /**
     * @ORM\OneToOne(targetEntity="CCI\RamScoBundle\Entity\Activite", cascade={"persist"})
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=false, unique=false)
    */
 
   private $Activite;

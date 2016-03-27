@@ -9,6 +9,7 @@ use CCI\RamScoBundle\Entity\Participant;
 use CCI\RamScoBundle\Entity\Role;
 use CCI\RamScoBundle\Entity\Activite;
 use CCI\RamScoBundle\Form\ActiviteType;
+use CCI\RamScoBundle\Form\ParticipantType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -154,66 +155,52 @@ array('personne' => $personne));
 	public function addparticipantAction(Request $request)
 	
 	{
-//Création de l'entité Participant
-$participant = new Participant();
 
+/*
 $repP = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Personne');
-$repR = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Role');
-$repA = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
-//$repository = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Personne');
-//$listAdherent = $repository->findAll();
-
-//tester si la combinaison existe déjà ?
-//rechercher les id ?
-//faire un formulaire ?
 $personne = $repP->findOneby(array('nom' => 'yasmina'));
-$role = $repR->findOneby(array('typeRole' => 'chauffeur'));
-$activite = $repA->findOneby(array('titreActivite' => 'Equitation'));
-
-//Remplissage de Participant
 $participant->setPersonne($personne);
+ 
+$repR = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Role');
+$role = $repR->findOneby(array('typeRole' => 'chauffeur'));
 $participant->setRole($role);
+
+$repA = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
+$activite = $repA->findOneby(array('titreActivite' => 'Equitation'));
 $participant->setActivite($activite);
 
-
-//Récupération de l'entity manager (em)
 $em = $this->getDoctrine()->getManager();
-
-//Persistance de l'entité
 $em->persist($participant);
+$em->flush();*/
 
-//Nettoyage de tout ce qui a été persisté avant
-$em->flush();
+$participant = new Participant();
+$form = $this->get('form.factory')->create(new ParticipantType,$participant);
 
-//Revoir ce que ça fait... :/
-/*if ($request->isMethod('POST')) {
+if ($form->handleRequest($request)->isValid()) {
+  $em = $this->getDoctrine()->getManager();
+  $em->persist($participant);
+  $em->flush();
 
-  $request->getSession()->getFlashBag()
-  ->add('notice', 'Participant bien enregistré.');
-return $this->redirect($this
-	->generateUrl('participant_view', 
-	array('id' => $participant->getId())));
-	
-	}*/
-
-return $this->render('CCIRamScoBundle:Yasmina:addparticipant.html.twig', 
-array('participant' => $participant));
+  $request->getSession()->getFlashBag()->add('notice', 'Participant bien enregistré.');
+  return $this->redirect($this->generateUrl('participant_view', array('id' => $participant->getId())));
 }
 
-	public function addactiviteAction(Request $request){
-	//Création de l'activité
+return $this->render('CCIRamScoBundle:Yasmina:addparticipant.html.twig', 
+array('form' => $form->createView(),));
+}
+
+	public function addactiviteAction(Request $request)
+	{
+
 $activite = new Activite();
 $form = $this->get('form.factory')->create(new ActiviteType,$activite);
 	
 if ($form->handleRequest($request)->isValid()) {
-  // On l'enregistre notre objet $advert dans la base de données, par exemple
   $em = $this->getDoctrine()->getManager();
   $em->persist($activite);
   $em->flush();
 
-  //Trouver un moyen de notifier la bonne création de l'activité !
   $request->getSession()->getFlashBag()->add('notice', 'Activite bien enregistrée.');
-  // On redirige vers la page de visualisation de l'annonce nouvellement créée
   return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
