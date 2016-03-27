@@ -67,12 +67,21 @@ class Activite
     {
 		if($this->dateActivite!=null)
 			{$date = $this->dateActivite;
-			$result=$date->format('Y-m-d H:i:s');}
+			$result=$date->format('d/m/Y H:i:s');}
 			else{$result = "pas de date fixée";}
 		//$result=date_format($this->dateActivite, 'Y-m-d H:i:s');
 		
 		$chaine=$result.' : '.$this->titreActivite.' ('.$this->lieu.')';
         return $chaine;
+    }
+    
+    public function getStringDateActivite()
+    {
+		if($this->dateActivite!=null)
+			{$date = $this->dateActivite;
+			$result=$date->format('d/m/Y H:i:s');}
+		else{$result = "Date non fixée";}
+        return $result;
     }
 
     /**

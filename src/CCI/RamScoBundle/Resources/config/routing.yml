@@ -1,14 +1,19 @@
 accueil:
-    path: accueil
+    path: /
     defaults: { _controller: CCIRamScoBundle:Yasmina:indexPerso}
 
 contact:
     path: contact
     defaults: { _controller: CCIRamScoBundle:Yasmina:contact }
+    
+ramassage:
+    path: ramassage
+    defaults: { _controller: CCIRamScoBundle:Yasmina:ramassage }
 
 FARYM:
     path: farym
     defaults: { _controller: CCIRamScoBundle:Yasmina:farym }
+    
     
     
 
@@ -24,27 +29,31 @@ adherent:
     path: adherent
     defaults: { _controller: CCIRamScoBundle:Yasmina:adherent }
 
-adherent_liste:    
-    path: admin/adherent/liste
-    defaults: { _controller: CCIRamScoBundle:Yasmina:listeadherent }
     
 
 admin:
-    path: admin
+    path: admin/
     defaults: { _controller: CCIRamScoBundle:Yasmina:admin }
+ 
     
     
 participant_add:    
     path: admin/participant/add
     defaults: { _controller: CCIRamScoBundle:Yasmina:addparticipant }
-    
-participant_liste:    
-    path: admin/participant/liste
-    defaults: { _controller: CCIRamScoBundle:Yasmina:listeparticipant }
-    
+        
 participant_view:
     path: admin/participant/{id}
-    defaults: { _controller: CCIRamScoBundle:Yasmina:view }
+    defaults: { _controller: CCIRamScoBundle:Yasmina:ficheparticipant }
+
+
+
+role_add:    
+    path: admin/role/add
+    defaults: { _controller: CCIRamScoBundle:Yasmina:addrole }
+        
+role_view:
+    path: admin/role/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:ficherole }
     
     
     
@@ -54,15 +63,13 @@ activite_add:
            
 activite_view:
     path: admin/activite/{id}
-    defaults: { _controller: CCIRamScoBundle:Yasmina:view }
+    defaults: { _controller: CCIRamScoBundle:Yasmina:ficheactivite }
     requirements : 
         id: \d+
 
 
 
-ramassage:
-    path: ramassage
-    defaults: { _controller: CCIRamScoBundle:Yasmina:ramassage }
+
 
 
 
