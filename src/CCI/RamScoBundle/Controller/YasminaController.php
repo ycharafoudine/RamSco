@@ -61,8 +61,7 @@ return new Response($content);
 
     {
 $repository = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
-$listActivite = $repository->findAll();
-//utiliser un QueryBuilder pour trier par date !
+$listActivite = $repository->myfindAll();
 
 foreach ($listActivite as $activite) {$activite->getContenu();}
 		
