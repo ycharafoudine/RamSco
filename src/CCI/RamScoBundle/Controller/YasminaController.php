@@ -49,15 +49,6 @@ class YasminaController extends Controller
 
     }*/
     
-    public function indexAction()
-
-    {
-$content = $this->get('templating')
-->render('CCIRamScoBundle:Yasmina:index.html.twig', 
-array('Nom' => 'Chatratfouine', 'Prenom' => 'Yasmina', 'Adresse' => 'Farfaraway', 'id' => '12'));
-return new Response($content);
-
-    }
     
     public function indexPersoAction()
 
@@ -109,48 +100,7 @@ return new Response($content);
     }
     
 
-    public function findumondeAction()
-
-    {
-$content = $this->get('templating')
-->render('CCIRamScoBundle:Yasmina:findumonde.html.twig', 
-array('nom' => 'Yasmina'));
-return new Response($content);
-
-    }
-    
-    
-    public function addAction(Request $request)
-    
-    {
-//Création de l'entité
-$personne = new Personne();
-$personne->setNom('Makise');
-$personne->setPrenom('Kurisu');
-$personne->setAdresse('El Psy Kongroo');
-	
-//Récupération de l'entity manager (em)
-$em = $this->getDoctrine()->getManager();
-//Persistance de l'entité
-$em->persist($personne);
-//Nettoyage de tout ce qui a été persisté avant
-$em->flush();
-	
-//Revoir ce que ça fait... :/
-if ($request->isMethod('POST')) {
-
-$request->getSession()->getFlashBag()
-      ->add('notice', 'Personne bien enregistrée.');
-return $this->redirect($this
-	->generateUrl('personne_view', 
-	array('id' => $personne->getId())));
-	
-	}
-
-return $this->render('CCIRamScoBundle:Yasmina:add.html.twig', 
-array('personne' => $personne));
-}
-
+   
 	//Page ajout d'un Participant
 	public function addparticipantAction(Request $request)
 	
@@ -235,6 +185,12 @@ public function contactAction()
 public function farymAction()
 {
 	return $this->render('CCIRamScoBundle:Yasmina:farym.html.twig');
+    }
+
+//Zone administrateur
+public function adminAction()
+{
+	return $this->render('CCIRamScoBundle:Yasmina:admin.html.twig');
     }
 }
 	
