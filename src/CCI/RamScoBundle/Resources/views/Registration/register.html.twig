@@ -6,6 +6,25 @@
 
 {% block stylesheets %}
 {{ parent() }}
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> 
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="{{ asset('bundles/Yasmina/js/datepicker-fr.js') }}"></script>
+	<script>
+	/*<![CDATA[*/ 
+		$(document).ready(function(){
+			$("#datepicker").click(function(){
+				$( "#datepicker" ).datepicker($.datepicker.regional[ "fr" ]);
+				$( "#locale" ).change(function() {
+					$( "#datepicker" ).datepicker( "option",
+					$.datepicker.regional[ $( this ).val() ] );
+				});
+			});
+		});
+	/*]]>*/
+  </script>
+
 <style>
 	p {padding-left:30px;}
 		
