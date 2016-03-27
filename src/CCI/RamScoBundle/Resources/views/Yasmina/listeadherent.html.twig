@@ -1,0 +1,24 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Liste Adherents - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h2>Adherents</h2>
+
+
+  <p>
+	
+	<table border="1">
+	<thead>
+	<tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th><th>Enfants</th></tr>
+	</thead>
+	{% for personne in listAdherent %}
+	<tr><td>{{ personne.id }}</td><td>{{ personne.Nom }}</td><td>{{ personne.Prenom }}
+	</td><td>{{ personne.Adresse }}</td><td>{{ personne.Telephone }}</td><td>{{ personne.Enfants }}</td></tr>
+	{% endfor %}
+	</table>
+  </p>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+{% block title %}
+	Ajout Participants - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h2>Participant</h2>
+
+
+  <p>
+
+    <a href="{{ url('participant_view', {'id': participant.id}) }}" class="btn btn-default"> Test </a><br />
+	Personne n°{{ participant.id }} :<br />
+		Nom : {{ participant.personne.Nom }}<br />
+		Prenom : {{ participant.personne.Prenom }}<br />
+		Adresse : {{ participant.personne.Adresse }}<br />
+		
+		Activité : {{ participant.activite.titreActivite }}<br />
+		Role : {{ participant.role.typeRole }}<br />
+
+  </p>
+
+{% endblock %}

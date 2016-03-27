@@ -1,0 +1,4 @@
+services:
+#    cci_ram_sco.example:
+#        class: CCI\RamScoBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

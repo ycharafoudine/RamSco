@@ -1,0 +1,10 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Espace membre - {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock %}

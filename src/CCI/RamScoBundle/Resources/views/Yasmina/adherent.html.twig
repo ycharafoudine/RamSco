@@ -1,0 +1,98 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	p {padding-left:30px;}
+	
+	h2 {text-align: left;
+			font-family: 'Bree Serif', serif;
+			margin: 30px;
+	}
+		
+	fieldset .enfant{
+		border-style: solid;
+		border-width: 2px;
+		border-color:#7F7F7F;
+		padding:10px;
+	}
+	
+	
+		
+</style>
+{% endblock %}
+
+{% block title %}
+	Devenir adhérent - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+
+			<h2>Devenir adhérent</h2>
+			<p>Incrivez-vous pour devenir adhérent de l'association et inscrire vos enfants au ramassage scolaire et aux activités organisées.</p>
+			
+			<form role="form">
+				<fieldset>
+				<div class="form-group">
+					<div class="col-sm-3">
+						<label for="nom">Nom : </label>
+						<input type="text" class="form-control" name="nom"  placeholder="Nom" required/>
+					
+						<label for="prenom">Prénom : </label>
+						<input type="text" class="form-control" name="prenom" placeholder="Prénom" required/>
+					
+						<label for="date_naissance">Date de naissance : </label>
+						<input type="date" name="date_naissance" class="form-control" placeholder="20/07/1990"/>
+						
+						<label>Permis de conduire : </label>
+						<label class="radio-inline">
+							<input type="radio" name="permis" value="oui">Oui
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="permis" value="non">Non
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<label for="adresse">Adresse : </label><br>
+							<input type="text" class="form-control" name="rue" placeholder="Rue" required/>
+							<input type="text" class="form-control" name="quartier" placeholder="Quartier" required/>
+							<input type="text" class="form-control" name="ville" placeholder="Ville" required/>
+
+						<label for="email">Adresse e-mail : </label>
+						<input type="email" class="form-control" name="email" placeholder="E-mail" required/>
+					
+						<label for="tel">Numéro de téléphone : </label>
+						<input type="tel" name="tel" class="form-control" placeholder="05 XX XX XX XX" required/>
+					</div>
+					<div class="col-sm-3">
+						<label for="nb_enfants">Nombre d'enfants inscrits à l'école : </label>
+						<input type="number" class="form-control" name="bn_enfants" min="0" placeholder="1" required/>
+					
+					{############################## On peut fouttre ça dans un autre template #########################}
+					
+					
+					{#si nb d'enfant = X -> affiche X champs prénom de l'enfant + date_naissance en JAVASCRIPT #}
+					<fieldset class="enfant">
+					<legend>Enfant n°1</legend>
+						<label for="prenom_enfant">Prénom : </label>
+						<input type="text" class="form-control" name="prenom_enfant"  placeholder="Prénom" required/>
+						
+						<label for="date_naissance_enfant">Date de naissance : </label>
+						<input type="date" name="date_naissance_enfant" class="form-control" placeholder="20/07/1990"/>
+					</fieldset>
+
+					
+					{####################################################################################################}
+					
+					</div>
+					
+				</fieldset>
+				<input type="submit" class="btn btn-default" value="Valider">
+			</form>
+
+	
+
+
+{% endblock %}
