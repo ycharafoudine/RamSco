@@ -39,7 +39,7 @@ return new Response($content);
     
    
 	//Page ajout d'un Participant
-	public function addparticipantAction(Request $request)
+	public function editparticipantAction(Request $request)
 	
 	{
 
@@ -60,7 +60,7 @@ $em = $this->getDoctrine()->getManager();
 $em->persist($participant);
 $em->flush();*/
 
-$participant = new Participant();
+/*$participant = new Participant();
 $form = $this->get('form.factory')->create(new ParticipantType,$participant);
 
 if ($form->handleRequest($request)->isValid()) {
@@ -73,26 +73,33 @@ if ($form->handleRequest($request)->isValid()) {
 }
 
 return $this->render('CCIRamScoBundle:Yasmina:addparticipant.html.twig', 
-array('form' => $form->createView(),));
-}
+array('form' => $form->createView(),));*/
 
-	public function addactiviteAction(Request $request)
-	{
+$message='';
+$em = $this->getDoctrine()->getManager();
 
-$activite = new Activite();
-$form = $this->get('form.factory')->create(new ActiviteType,$activite);
+if (isset($id)) 
+	{$participant = $em->find('CCIRamScoBundle:Participant', $id);
+	if (!$participant){$message='Aucun participant trouvé';}}
+else{$participant = new Participant();}
+
+$form = $this->get('form.factory')->create(new ParticipantType,$participant);
 	
 if ($form->handleRequest($request)->isValid()) {
-  $em = $this->getDoctrine()->getManager();
-  $em->persist($activite);
+  
+  $em->persist($participant);
   $em->flush();
-
-  $request->getSession()->getFlashBag()->add('notice', 'Activite bien enregistrée.');
-  return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+	
+	if (isset($id)){$message='Participant modifié avec succès !';}
+	else{$message='Participant ajouté avec succès !';}
+  
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
-return $this->render('CCIRamScoBundle:Yasmina:addactivite.html.twig', 
-array('form' => $form->createView(),));
+return $this->render('CCIRamScoBundle:Yasmina:editparticipant.html.twig', 
+array('form' => $form->createView(),'message'=>$message));
+
+
 }
 
 	public function editactiviteAction(Request $request, $id=null)
@@ -124,27 +131,33 @@ array('form' => $form->createView(),'message'=>$message));
 }
 
 
-	public function addroleAction(Request $request)
+	public function editroleAction(Request $request, $id=null)
 	{
 
-$role = new Role();
+$message='';
+$em = $this->getDoctrine()->getManager();
+
+if (isset($id)) 
+	{$role = $em->find('CCIRamScoBundle:Role', $id);
+	if (!$role){$message='Aucun rôle trouvé';}}
+else{$role = new Role();}
+
 $form = $this->get('form.factory')->create(new RoleType,$role);
 	
 if ($form->handleRequest($request)->isValid()) {
-  $em = $this->getDoctrine()->getManager();
+  
   $em->persist($role);
   $em->flush();
-
-  $request->getSession()->getFlashBag()->add('notice', 'Rôle bien enregistré.');
-  return $this->redirect($this->generateUrl('role_view', array('id' => $role->getId())));
+	
+	if (isset($id)){$message='Rôle modifié avec succès !';}
+	else{$message='Rôle ajouté avec succès !';}
+  
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
-return $this->render('CCIRamScoBundle:Yasmina:addrole.html.twig', 
-array('form' => $form->createView(),));
+return $this->render('CCIRamScoBundle:Yasmina:editrole.html.twig', 
+array('form' => $form->createView(),'message'=>$message));
 }
-
-
-
 
 
 //Page adherent avec formulaire pas reliée à la BDD

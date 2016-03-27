@@ -39,21 +39,21 @@
 		
 	</div>
 	
-    <div id="participants" class="tab-pane fade ">
+    <div id="participants" class="tab-pane fade in active">
 		<h2>Liste des participants</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th></tr>
+			<tr><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th><th>Modifier</th></tr>
 		</thead>
 		<tbody>
 		{% for participant in listParticipant %}
 					<tr>
-						<td> {{ participant.id }} </td>
 						<td> {{ participant.personne.nom }}</td>
 						<td> {{ participant.personne.prenom }} </td>
 						<td> {{ participant.role.typeRole }} </td>
 						<td> {{ participant.activite.titreActivite }} </td>
-						<td> <a href="/admin/participant/edit">Modifier / Supprimer </a></td>
+						<td> <a href="/admin/participant/edit/{{ participant.id }}">*</a></td>
+						<td> <a href="/admin/participant/remove/{{ participant.id }}">x</a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
@@ -62,17 +62,16 @@
 
     </div>
     
-     <div id="activites" class="tab-pane fade in active">
+     <div id="activites" class="tab-pane fade ">
 		<h2>Liste des activités</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Id</th><th>Date</th><th>Titre Activité</th><th>Lieu</th></tr>
+			<tr><th>Date</th><th>Titre Activité</th><th>Lieu</th></tr>
 		</thead>
 		<tbody>
 		{% for activite in listActivite %}
 					<tr>
-						<td> {{ activite.id }} </td>
-						<td> dateActivite </td>
+						<td> {{ activite.stringdateActivite }} </td>
 						<td> {{ activite.titreActivite }} </td>
 						<td> {{ activite.lieu }} </td>
 						<td> <a href="/admin/activite/edit/{{ activite.id }}">Modifier / Supprimer </a></td>
@@ -85,19 +84,18 @@
 		
     </div>
     
-    <div id="roles" class="tab-pane fade">
+    <div id="roles" class="tab-pane fade ">
 		<h2>Liste des rôles</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Id</th><th>Type Rôles</th><th>Description</th></tr>
+			<tr><th>Type Rôles</th><th>Description</th></tr>
 		</thead>
 		<tbody>
 		{% for role in listRole %}
 					<tr>
-						<td> {{ role.id }} </td>
 						<td> {{ role.typeRole }} </td>
 						<td> {{ role.fonction }} </td>
-						<td> <a href="/admin/role/edit">Modifier / Supprimer </a></td>
+						<td> <a href="/admin/role/edit/{{ role.id }}">Modifier / Supprimer </a></td>
 					</tr>
 				  {% endfor %}
 		</tbody>
