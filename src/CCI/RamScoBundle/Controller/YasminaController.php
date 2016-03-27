@@ -18,17 +18,40 @@ use Symfony\Component\HttpFoundation\Request;
 class YasminaController extends Controller
 
 {
-	 public function viewAction($id)
-  {
-    return new Response("Affichage de l'annonce d'id : ".$id);
-  }  
-  
+ 
   public function ficheactiviteAction($id)
   {
-$repAc = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
-$activite = $repAc->find($id);
+$rep = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
+$activite = $rep->find($id);
 $content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:ficheactivite.html.twig', 
 array('activite' => $activite));
+return new Response($content);
+  } 
+  
+  public function ficheadherentAction($id)
+  {
+$rep = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Personne');
+$personne = $rep->find($id);
+$content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:ficheadherent.html.twig', 
+array('personne' => $personne));
+return new Response($content);
+  }
+  
+  public function ficheparticipantAction($id)
+  {
+$rep = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Participant');
+$participant = $rep->find($id);
+$content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:ficheparticipant.html.twig', 
+array('participant' => $participant));
+return new Response($content);
+  }
+  
+  public function ficheroleAction($id)
+  {
+$rep = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Role');
+$role = $rep->find($id);
+$content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:ficherole.html.twig', 
+array('role' => $role));
 return new Response($content);
   } 
     

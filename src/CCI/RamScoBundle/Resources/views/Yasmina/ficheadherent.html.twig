@@ -1,0 +1,36 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Fiche adhérent n° {{ personne.id }}- {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    
+
+        <h2>{{ personne.username }}</h2>
+
+		<h3>Identité</h3>
+			<p>Nom : {{ personne.nom }}<br />
+			Prénom : {{ personne.prenom }}<br />
+			Date de naissance : {{ personne.stringdatenaissance }}<br />
+			N° d'adhérent : {{ personne.numAdherent }}</p>
+		
+		
+		<h3>Informations de contact</h3>
+			<p>Téléphone : {{ personne.telephone }}<br />
+			Adresse e-mail : {{ personne.email }}<br />
+			Adresse : {{ personne.adresse }}</p>
+		
+		<h3>Autres informations</h3>
+			<p>Date d'inscription : {{ personne.stringdateinscription }}<br />
+			Permis : {{ personne.permis }}<br />
+			Montant cotisation : {{ personne.cotisation }}<br />
+			Montant réduction : {{ personne.reduction }}<br /></p>
+		
+		<h3>Autres personnes</h3>
+			<p></p>
+			
+			<br /><br />
+Dernière connexion : {{ personne.stringlastlogin }}<br />
+
+{% endblock %}

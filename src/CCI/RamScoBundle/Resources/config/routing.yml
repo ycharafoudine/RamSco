@@ -48,7 +48,12 @@ adherent_add:
 adherent_edit:    
     path: admin/adherent/edit/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:editadherent }
- 
+    
+adherent_view:    
+    path: admin/adherent/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:ficheadherent }
+    requirements : 
+        id: \d+ 
     
     
 participant_add:    

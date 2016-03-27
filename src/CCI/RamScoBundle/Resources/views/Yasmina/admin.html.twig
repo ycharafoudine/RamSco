@@ -22,12 +22,13 @@
 		<h2>Liste des adhérents</h2>
 		<table border="1">
 		<thead>
-			<tr><th>N°</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
+			<tr><th></th><th>N°</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for personne in listAdherent %}
 					<tr>
-						<td> <a href="/admin/adherent/view"> {{ personne.numAdherent }}  </a></td>
+						<td> <a href="/admin/adherent/{{ personne.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
+						<td> {{ personne.numAdherent }}</td>
 						<td> {{ personne.nom }}</td><td> {{ personne.prenom }} </td>
 						<td> {{ personne.adresse }} </td><td> {{ personne.telephone }} </td>
 						<td> <a href="/admin/adherent/edit/{{ personne.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
@@ -43,11 +44,12 @@
 		<h2>Liste des participants</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
+			<tr><th></th><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for participant in listParticipant %}
 					<tr>
+						<td> <a href="/admin/participant/{{ participant.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
 						<td> {{ participant.personne.nom }}</td>
 						<td> {{ participant.personne.prenom }} </td>
 						<td> {{ participant.role.typeRole }} </td>
@@ -66,12 +68,13 @@
 		<h2>Liste des activités</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Date</th><th>Titre Activité</th><th>Lieu</th><th>Modif</th><th>Suppr</th></tr>
+			<tr><th></th><th>Date</th><th>Titre Activité</th><th>Lieu</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for activite in listActivite %}
 					<tr>
-						<td> <a href="/admin/activite/{{ activite.id }}">{{ activite.stringdateActivite }}</a></td>
+						<td> <a href="/admin/activite/{{ activite.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
+						<td> {{ activite.stringdateActivite }}</td>
 						<td> {{ activite.titreActivite }} </td>
 						<td> {{ activite.lieu }} </td>
 						<td> <a href="/admin/activite/edit/{{ activite.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
@@ -89,11 +92,12 @@
 		<h2>Liste des rôles</h2>
 		<table border="1">
 		<thead>
-			<tr><th>Type Rôles</th><th>Description</th><th>Modif</th><th>Suppr</th></tr>
+			<tr><th></th><th>Type Rôles</th><th>Description</th><th>Modif</th><th>Suppr</th></tr>
 		</thead>
 		<tbody>
 		{% for role in listRole %}
 					<tr>
+						<td> <a href="/admin/role/{{ role.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
 						<td> {{ role.typeRole }} </td>
 						<td> {{ role.fonction }} </td>
 						<td> <a href="/admin/role/edit/{{ role.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
