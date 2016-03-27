@@ -12,4 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActiviteRepository extends EntityRepository
 {
+	public function myFindAll()
+  {
+    // Méthode 1 : en passant par l'EntityManager
+    $queryBuilder = $this->_em->createQueryBuilder()
+      ->select('a')
+      ->from($this->_entityName, 'a')
+      ->orderBy('a.dateActivite','DESC');
+    ;
+
+    // On récupère la Query à partir du QueryBuilder
+    $query = $queryBuilder->getQuery();
+
+    // On récupère les résultats à partir de la Query
+    $results = $query->getResult();
+
+    // On retourne ces résultats
+    return $results;
+  }
 }
