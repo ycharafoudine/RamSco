@@ -1,10 +1,13 @@
-<title>{% block title %}Le tapis roulant{% endblock %}</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block content %}
-    {% block fos_user_content %}
+	<title>{% block title %}Le tapis roulant{% endblock %}</title>
+
 		
   {% block stylesheets %}
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -13,7 +16,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Bree+Serif&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<style>
-		body {background-color: #FEFFB1;}
+		body {background-color: #FEFFB0;}
 		
 		.navbar-inverse .navbar-brand, h1 { color : #FFA500; font-family: 'Indie Flower', cursive; }
 		
@@ -43,12 +46,10 @@
 			color:;
 		}
 		
-		.contenu {
+		#contenu {
 			width:90%;
 			margin-left:5%;
 			margin-right:5%;
-			background-color: #FEFFB0;
-			display: block;
 		}
 		
 		.form-control {margin-bottom : 15px;}
@@ -66,8 +67,8 @@
 		}
 		
 		footer {
-			position: absolute;
-			bottom:0%;
+			position: fixed;
+			bottom:0;
 			width: 100%;
 			height:20px;
 			text-align: center;
@@ -133,24 +134,14 @@
 	</header>
 		
 	
-	<div class="contenu">
+	<div id="contenu">
         {% block body %}
         {% endblock %}
-	</div>
-
+	</div>	
 		
-		
-		
-		
-	<footer class="container-fluid text-center">
-	  <p><a href="/farym">FARYM</a> © {{ 'now'|date('Y') }}</p>
+	<footer>
+	  <p><a href="/farym">FARYM</a> {{ 'now'|date('Y') }}</p>
 	</footer>
-	
-	
-	
-	
-	
 
-  </div>
-{% endblock %}
-{% endblock %}
+</body>
+</html>
