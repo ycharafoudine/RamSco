@@ -1,0 +1,18 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Fiche rôle n° {{ role.id }}- {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    
+
+        <h2>{{ role.typerole }}</h2>
+
+		
+			<p>Description : {{ role.fonction }}<br />
+			</p>
+
+        </p>
+
+{% endblock %}

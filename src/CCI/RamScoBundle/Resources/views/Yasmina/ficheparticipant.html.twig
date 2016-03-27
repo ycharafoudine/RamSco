@@ -1,0 +1,20 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Fiche participant n° {{ participant.id }}- {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    
+
+        <h2>{{ participant.personne.nomprenom }}</h2>
+
+		
+			<p>Rôle : {{ participant.role.typerole }}<br />
+			Activite : {{ participant.activite.titreactivite }}<br />
+			Date / Heure : {{ participant.activite.stringdateactivite }}<br />
+			</p>
+
+        </p>
+
+{% endblock %}
