@@ -39,7 +39,7 @@
 		<a href="/admin/adherent/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un adhérent</a>
 	</div>
 	
-    <div id="participants" class="tab-pane fade ">
+    <div id="participants" class="tab-pane fade in active">
 		<h2>Liste des participants</h2>
 		<table border="1">
 		<thead>
@@ -62,7 +62,7 @@
 
     </div>
     
-     <div id="activites" class="tab-pane fade ">
+     <div id="activites" class="tab-pane fade in active">
 		<h2>Liste des activités</h2>
 		<table border="1">
 		<thead>
@@ -71,7 +71,7 @@
 		<tbody>
 		{% for activite in listActivite %}
 					<tr>
-						<td> {{ activite.stringdateActivite }} </td>
+						<td> <a href="/admin/activite/{{ activite.id }}">{{ activite.stringdateActivite }}</a></td>
 						<td> {{ activite.titreActivite }} </td>
 						<td> {{ activite.lieu }} </td>
 						<td> <a href="/admin/activite/edit/{{ activite.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
@@ -85,7 +85,7 @@
 		
     </div>
     
-    <div id="roles" class="tab-pane fade ">
+    <div id="roles" class="tab-pane fade in active">
 		<h2>Liste des rôles</h2>
 		<table border="1">
 		<thead>
@@ -108,7 +108,9 @@
 	
   </div>
 </div>
-
-
+<br />
+<br />
+<br />
+<br />
 		
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Fiche activité n° {{ activite.id }}- {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    
+
+        <h2>{{ activite.titreActivite }}</h2>
+
+		
+			<p>Lieu : {{ activite.lieu }}<br />
+			Date et Heure: {{ activite.stringdateactivite }}<br />
+			Fournitures : {{ activite.fournitures }}<br />
+			Coût : {{ activite.cout }}<br />
+			</p>
+
+        </p>
+
+{% endblock %}

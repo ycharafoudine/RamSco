@@ -22,6 +22,15 @@ class YasminaController extends Controller
   {
     return new Response("Affichage de l'annonce d'id : ".$id);
   }  
+  
+  public function ficheactiviteAction($id)
+  {
+$repAc = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
+$activite = $repAc->find($id);
+$content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:ficheactivite.html.twig', 
+array('activite' => $activite));
+return new Response($content);
+  } 
     
     public function indexPersoAction()
 
