@@ -111,6 +111,11 @@ class Personne extends BaseUser
         $this->dateInscription = new \Datetime();
         // your own logic
     }
+    
+    public function getNomPrenom()
+    {
+		return $this->nom.' '.$this->prenom;
+	}
 
 
     /**
