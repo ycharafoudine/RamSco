@@ -4,6 +4,14 @@
 	Espace membre - {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+		.btn-default {margin:0;}
+		.col-sm-3 {margin-right: 0;}
+		.boutons{position:absolute; bottom: 20%;}
+	</style>
+{% endblock %}
 
 {% block body %}
 {% include "FOSUserBundle:Profile:show_content.html.twig" %}
