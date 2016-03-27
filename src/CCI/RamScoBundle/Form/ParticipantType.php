@@ -15,9 +15,19 @@ class ParticipantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Personne')
-            ->add('Role')
-            ->add('Activite')
+			->add('Personne', 'entity', array(
+				'class'    => 'CCIRamScoBundle:Personne',
+				'property' => 'NomPrenom',
+				'multiple' => true))
+            ->add('Role', 'entity', array(
+				'class'    => 'CCIRamScoBundle:Role',
+				'property' => 'typeRole',
+				'multiple' => true))
+            ->add('Activite', 'entity', array(
+				'class'    => 'CCIRamScoBundle:Activite',
+				'property' => 'titreActivite',
+				'multiple' => true))
+			->add('enregistrer','submit')
         ;
     }
     

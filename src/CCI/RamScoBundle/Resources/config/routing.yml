@@ -62,8 +62,6 @@ participant_liste:
 participant_view:
     path: admin/participant/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:view }
-    requirements : 
-        id: \d+
     
     
     
