@@ -10,6 +10,7 @@ use CCI\RamScoBundle\Entity\Role;
 use CCI\RamScoBundle\Entity\Activite;
 use CCI\RamScoBundle\Form\ActiviteType;
 use CCI\RamScoBundle\Form\ParticipantType;
+use CCI\RamScoBundle\Form\RoleType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -18,37 +19,8 @@ class YasminaController extends Controller
 {
 	 public function viewAction($id)
   {
-    // $id vaut 5 si l'on a appelé l'URL /platform/advert/5
-
-    // Ici, on récupèrera depuis la base de données
-    // l'annonce correspondant à l'id $id.
-    // Puis on passera l'annonce à la vue pour
-    // qu'elle puisse l'afficher
-
     return new Response("Affichage de l'annonce d'id : ".$id);
-  }
-
-    /*public function indexAction()
-
-    {
-
-        // On veut avoir l'URL de l'annonce d'id 5.
-
-        $url = $this->get('router')->generate(
-
-            'personne_view', // 1er argument : le nom de la route
-
-            array('id' => 5), true    // 2e argument : les valeurs des paramètres
-
-        );
-
-        // $url vaut « /platform/advert/5 »
-
-
-        return new Response("L'URL de l'annonce d'id 5 est : ".$url);
-
-    }*/
-    
+  }  
     
     public function indexPersoAction()
 
@@ -65,41 +37,6 @@ return new Response($content);
 
     }
     
-    
-    
-    public function listeparticipantAction()
-
-    {
-$repository = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Participant');
-$listParticipant = $repository->findAll();
-//utiliser un QueryBuilder pour trier par date !
-
-foreach ($listParticipant as $participant) {$participant->getId();}
-		
-$content = $this->get('templating')
-->render('CCIRamScoBundle:Yasmina:listeparticipant.html.twig', 
-array('listParticipant' => $listParticipant));
-return new Response($content);
-
-    }
-    
-    public function listeadherentAction()
-
-    {
-$repository = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Personne');
-$listAdherent = $repository->findAll();
-//utiliser un QueryBuilder pour trier par date !
-
-foreach ($listAdherent as $personne) {$personne->getId();}
-		
-$content = $this->get('templating')
-->render('CCIRamScoBundle:Yasmina:listeadherent.html.twig', 
-array('listAdherent' => $listAdherent));
-return new Response($content);
-
-    }
-    
-
    
 	//Page ajout d'un Participant
 	public function addparticipantAction(Request $request)
@@ -158,6 +95,25 @@ return $this->render('CCIRamScoBundle:Yasmina:addactivite.html.twig',
 array('form' => $form->createView(),));
 }
 
+public function addroleAction(Request $request)
+	{
+
+$role = new Role();
+$form = $this->get('form.factory')->create(new RoleType,$role);
+	
+if ($form->handleRequest($request)->isValid()) {
+  $em = $this->getDoctrine()->getManager();
+  $em->persist($role);
+  $em->flush();
+
+  $request->getSession()->getFlashBag()->add('notice', 'Rôle bien enregistré.');
+  return $this->redirect($this->generateUrl('role_view', array('id' => $role->getId())));
+}
+	
+return $this->render('CCIRamScoBundle:Yasmina:addrole.html.twig', 
+array('form' => $form->createView(),));
+}
+
 
 
 
@@ -190,7 +146,21 @@ public function farymAction()
 //Zone administrateur
 public function adminAction()
 {
-	return $this->render('CCIRamScoBundle:Yasmina:admin.html.twig');
+$repAc = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
+$listActivite = $repAc->myfindAll();
+$repAd = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Personne');
+$listAdherent = $repAd->findAll();
+$repP = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Participant');
+$listParticipant = $repP->findAll();
+$repR = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Role');
+$listRole = $repR->findAll();
+
+		
+$content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:admin.html.twig', 
+array('listActivite' => $listActivite, 'listAdherent' => $listAdherent, 
+'listParticipant' => $listParticipant, 'listRole' => $listRole));
+return new Response($content);
+	//return $this->render('CCIRamScoBundle:Yasmina:admin.html.twig');
     }
 }
 	

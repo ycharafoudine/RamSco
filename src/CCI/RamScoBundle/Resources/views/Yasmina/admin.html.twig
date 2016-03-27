@@ -19,30 +19,96 @@
 
   <div class="tab-content">
     <div id="adherents" class="tab-pane fade in active">
-		<li><a href="/admin/adherent/liste">Liste des adhérents</a></li>
-		<li><a href="/admin/adherent/edit">Supprimer un adhérent</a></li>
+		<h2>Liste des adhérents</h2>
+		<table border="1">
+		<thead>
+			<tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th></tr>
+		</thead>
+		<tbody>
+		{% for personne in listAdherent %}
+					<tr>
+						<td> <a href="/admin/adherent/view"> {{ personne.id }}  </a></td>
+						<td> {{ personne.nom }}</td><td> {{ personne.prenom }} </td>
+						<td> {{ personne.adresse }} </td><td> {{ personne.telephone }} </td>
+						<td> <a href="/admin/adherent/edit">Modifier / Supprimer </a></td>
+					</tr>
+				  {% endfor %}
+		</tbody>
+		</table>
+		
+		
 	</div>
 	
-    <div id="participants" class="tab-pane fade in active">
-		<li><a href="/admin/participant/liste">Liste des participants</a></li>
-		<li><a href="/admin/participant/add">Ajouter un participant</a></li>
-		<li><a href="/admin/participant/edit">Supprimer un participant</a></li></div>
+    <div id="participants" class="tab-pane fade">
+		<h2>Liste des participants</h2>
+		<table border="1">
+		<thead>
+			<tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Téléphone</th></tr>
+		</thead>
+		<tbody>
+		{% for participant in listParticipant %}
+					<tr>
+						<td> {{ participant.id }} </td>
+						<td> {{ participant.personne.nom }}</td>
+						<td> {{ participant.personne.prenom }} </td>
+						<td> {{ participant.role.typeRole }} </td>
+						<td> {{ participant.activite.titreActivite }} </td>
+						<td> <a href="/admin/participant/edit">Modifier / Supprimer </a></td>
+					</tr>
+				  {% endfor %}
+		</tbody>
+		</table>
+		<a href="/admin/participant/add">Ajouter un participant</a>
+
     </div>
     
-     <div id="activites" class="tab-pane fade in active">
-		<li><a href="/activites">Liste des activités</a></li>
-		<li><a href="/admin/activite/add">Planifier une activité</a></li>
-		<li><a href="/admin/activite/edit">Annuler une activité</a></li>
+     <div id="activites" class="tab-pane fade">
+		<h2>Liste des activités</h2>
+		<table border="1">
+		<thead>
+			<tr><th>Id</th><th>Date</th><th>Titre Activité</th><th>Lieu</th></tr>
+		</thead>
+		<tbody>
+		{% for activite in listActivite %}
+					<tr>
+						<td> {{ activite.id }} </td>
+						<td> dateActivite </td>
+						<td> {{ activite.titreActivite }} </td>
+						<td> {{ activite.lieu }} </td>
+						<td> <a href="/admin/activite/edit">Modifier / Supprimer </a></td>
+					</tr>
+				  {% endfor %}
+		</tbody>
+		</table>
+		<a href="/admin/activite/add">Planifier une activité</a>
+		
+		
     </div>
     
-    <div id="roles" class="tab-pane fade in active">
-		<li><a href="/admin/role/liste">Liste des rôles</a></li>
-		<li><a href="/admin/role/add">Ajouter un rôle</a></li>
-		<li><a href="/admin/role/edit">Supprimer un rôle</a></li>
+    <div id="roles" class="tab-pane fade">
+		<h2>Liste des rôles</h2>
+		<table border="1">
+		<thead>
+			<tr><th>Id</th><th>Type Rôles</th><th>Description</th></tr>
+		</thead>
+		<tbody>
+		{% for role in listRole %}
+					<tr>
+						<td> {{ role.id }} </td>
+						<td> {{ role.typeRole }} </td>
+						<td> {{ role.fonction }} </td>
+						<td> <a href="/admin/role/edit">Modifier / Supprimer </a></td>
+					</tr>
+				  {% endfor %}
+		</tbody>
+		</table>
+		<a href="/admin/role/add">Ajouter un rôle</a>
+
 	</div>
-    </div>
+	
   </div>
-  </div>
+</div>
+
 
 		
 {% endblock %}

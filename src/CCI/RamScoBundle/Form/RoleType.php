@@ -17,6 +17,7 @@ class RoleType extends AbstractType
         $builder
             ->add('typeRole')
             ->add('fonction')
+            ->add('enregistrer','submit')
         ;
     }
     
