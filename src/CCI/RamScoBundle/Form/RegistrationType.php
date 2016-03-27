@@ -7,16 +7,42 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationType extends AbstractType
 {
+	//fonction pour créer toutes les années du form date de naissance
+	public function array_annees(){
+		  $resultat = array();
+		  $annee = 1950;
+		  while($annee <= date("Y")){
+			   $resultat[] = $annee;
+			   $annee+=1;
+		  }
+		  return $resultat;
+	 }
+	
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+		$dates=array_annees();
+		
         $builder
         ->add('nom')
         ->add('prenom')
         ->add('adresse')
-        ->add('enfants')
-        ->add('dateNaissance')
+        ->add('enfants', 'choice', array(
+              'choices' => array('Oui' => true, 'Non' => false),
+              'choices_as_values' => true,
+              'expanded'=> true,
+              'multiple'=> false
+              ))
+        ->add('dateNaissance', null, array(
+			'format' => 'dd-MM-yyyy',
+			'years' => $dates,
+			'placeholder' => array('year' => 'Année', 'month' => 'Mois', 'day' => 'Jour' )))
         ->add('telephone')
-        ->add('permis');
+        ->add('permis', 'choice', array(
+              'choices' => array('Oui' => true, 'Non' => false),
+              'choices_as_values' => true,
+              'expanded'=> true,
+              'multiple'=> false
+              ));
     }
 
     public function getParent()
