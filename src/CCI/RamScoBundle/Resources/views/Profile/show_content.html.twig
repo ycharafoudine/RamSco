@@ -2,31 +2,40 @@
 
 <div class="fos_user_user_show">
 	<h2>Bienvenue {{ user.username }}</h2>
+	
+<div class="form-group col-sm-3">
 		<h3>Identité</h3>
-			<p>Nom : {{ user.nom }}<br />
-			Prénom : {{ user.prenom }}<br />
-			Date de naissance : {{ user.stringdatenaissance }}<br />
-			N° d'adhérent : {{ user.numAdherent }}</p>
-		
-		
+			<p>Nom : {{ user.nom }}</p>
+			<p>Prénom : {{ user.prenom }}</p>
+			<p>Date de naissance : {{ user.stringdatenaissance }}</p>
+			<p>N° d'adhérent : {{ user.numAdherent }}</p>
+		</div>
+		<div class="form-group col-sm-3">
 		<h3>Informations de contact</h3>
-			<p>Téléphone : {{ user.telephone }}<br />
-			Adresse e-mail : {{ user.email }}<br />
-			Adresse : {{ user.adresse }}</p>
-		
+			<p>Téléphone : {{ user.telephone }}</p>
+			<p>Adresse e-mail : {{ user.email }}</p>
+			<p>Adresse : {{ user.adresse }}</p>
+		</div>
+		<div class="form-group col-sm-3">
 		<h3>Autres informations</h3>
-			<p>Date d'inscription : {{ user.stringdateinscription }}<br />
-			Permis : {{ user.permis }}<br />
-			Montant cotisation : {{ user.cotisation }}<br />
-			Montant réduction : {{ user.reduction }}<br /></p>
-		
-		<h3>Autres personnes</h3>
-			<p></p>
+			<p>Date d'inscription : {{ user.stringdateinscription }}</p>
+			<p>Permis : {{ user.permis }}</p>
+			<p>Montant cotisation : {{ user.cotisation }}</p>
+			<p>Montant réduction : {{ user.reduction }}</p>
+		</div>
+		<div class="form-group col-sm-3">
+		<h3>Personnes liés</h3>
+			<p>Liste des personnes de votre famille</p>
 			
-			<br /><br />
-Dernière connexion : {{ user.stringlastlogin }}<br />
-    <a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Déconnexion</a>
-    
-    <a href="/profile/editer">Modifier</a>
-    <a href="/change-password/change-password">Changer de mot de passe</a>
+		</div>
+
+	<div class="boutons">
+		<p>Dernière connexion : {{ user.stringlastlogin }}</p>
+		<p>
+			<a class="btn btn-default" role="button href="/profile/editer">Modifier</a>
+			<a class="btn btn-default" role="button href="/change-password/change-password">Changer de mot de passe</a>
+			<a class="btn btn-default" role="button href="/logout"><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a>
+		</p>
+	</div>
+
 </div>
