@@ -4,33 +4,43 @@
 	Fiche adhérent n° {{ personne.id }}- {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+		.derco{margin-top:30%; margin-bottom:40px;}
+		.col-sm-3 {margin-right: 0;}
+	</style>
+{% endblock %}
+
 {% block body %}
-    
-
         <h2>{{ personne.username }}</h2>
-
+        
+		<div class="form-group col-sm-3">
 		<h3>Identité</h3>
-			<p>Nom : {{ personne.nom }}<br />
-			Prénom : {{ personne.prenom }}<br />
-			Date de naissance : {{ personne.stringdatenaissance }}<br />
-			N° d'adhérent : {{ personne.numAdherent }}</p>
-		
-		
+			<p>Nom : {{ personne.nom }}</p>
+			<p>Prénom : {{ personne.prenom }}</p>
+			<p>Date de naissance : {{ personne.stringdatenaissance }}</p>
+			<p>N° d'adhérent : {{ personne.numAdherent }}</p>
+		</div>
+		<div class="form-group col-sm-3">
 		<h3>Informations de contact</h3>
-			<p>Téléphone : {{ personne.telephone }}<br />
-			Adresse e-mail : {{ personne.email }}<br />
-			Adresse : {{ personne.adresse }}</p>
-		
+			<p>Téléphone : {{ personne.telephone }}</p>
+			<p>Adresse e-mail : {{ personne.email }}</p>
+			<p>Adresse : {{ personne.adresse }}</p>
+		</div>
+		<div class="form-group col-sm-3">
 		<h3>Autres informations</h3>
-			<p>Date d'inscription : {{ personne.stringdateinscription }}<br />
-			Permis : {{ personne.permis }}<br />
-			Montant cotisation : {{ personne.cotisation }}<br />
-			Montant réduction : {{ personne.reduction }}<br /></p>
-		
-		<h3>Autres personnes</h3>
+			<p>Date d'inscription : {{ personne.stringdateinscription }}</p>
+			<p>Permis : {{ personne.permis }}</p>
+			<p>Montant cotisation : {{ personne.cotisation }}</p>
+			<p>Montant réduction : {{ personne.reduction }}</p>
+		</div>
+		<div class="form-group col-sm-3">
+		<h3>Personnes liées</h3>
 			<p></p>
 			
-			<br /><br />
-Dernière connexion : {{ personne.stringlastlogin }}<br />
-
+		</div>
+		<div class="derco">
+			<p>Dernière connexion : {{ personne.stringlastlogin }}</p>
+		</div>
 {% endblock %}

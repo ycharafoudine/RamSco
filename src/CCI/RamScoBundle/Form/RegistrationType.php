@@ -20,7 +20,7 @@ class RegistrationType extends AbstractType
               'expanded'=> true,
               'multiple'=> false
               ))
-        ->add('dateNaissance')
+        ->add('dateNaissance', null,array( 'attr'=>array('style'=>'display:none;')))
         ->add('telephone')
         ->add('permis', 'choice', array(
               'choices' => array('Oui' => true, 'Non' => false),
