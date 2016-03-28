@@ -13,6 +13,7 @@ use CCI\RamScoBundle\Form\ParticipantType;
 use CCI\RamScoBundle\Form\RoleType;
 use CCI\RamScoBundle\Form\ProfileEditType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGenerator;
 
 
 class YasminaController extends Controller
@@ -245,6 +246,12 @@ public function farymAction()
 	return $this->render('CCIRamScoBundle:Yasmina:farym.html.twig');
     }
 
+//Page association
+public function associationAction()
+{
+	return $this->render('CCIRamScoBundle:Yasmina:association.html.twig');
+    }
+    
 //Zone administrateur
 public function adminAction()
 {

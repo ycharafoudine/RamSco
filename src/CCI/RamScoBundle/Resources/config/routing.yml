@@ -33,6 +33,9 @@ adherent:
     path: adherent
     defaults: { _controller: CCIRamScoBundle:Yasmina:adherent }
     
+association:    
+    path: association
+    defaults: { _controller: CCIRamScoBundle:Yasmina:association }
 
 
     
