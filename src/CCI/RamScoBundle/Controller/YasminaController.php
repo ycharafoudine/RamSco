@@ -13,27 +13,12 @@ use CCI\RamScoBundle\Form\ParticipantType;
 use CCI\RamScoBundle\Form\RoleType;
 use CCI\RamScoBundle\Form\ProfileEditType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Generator\UrlGenerator;
 
 
 class YasminaController extends Controller
 
 {
- 
- public function indexPersoAction()
-    {
-$repository = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
-$listActivite = $repository->myfindAll();
-
-foreach ($listActivite as $activite) {$activite->getContenu();}
-		
-$content = $this->get('templating')
-->render('CCIRamScoBundle:Yasmina:indexPerso.html.twig', 
-array('listActivite' => $listActivite));
-return new Response($content);
-
-    }
  
   public function ficheactiviteAction($id)
   {
@@ -71,59 +56,20 @@ array('role' => $role));
 return new Response($content);
   } 
     
-    
-	public function delactiviteAction($id)
-	{
-$em = $this->getDoctrine()->getManager();
-$activite = $em->find('CCIRamScoBundle:Activite', $id);
-      
-if (!$activite) {throw new NotFoundHttpException("Activité non trouvée");}
-      
-$em->remove($activite);
-$em->flush();        
+    public function indexPersoAction()
 
-return new RedirectResponse($this->get('router')->generate('admin'));
-}
+    {
+$repository = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
+$listActivite = $repository->myfindAll();
 
-	public function deladherentAction($id)
-	{
-$em = $this->getDoctrine()->getManager();
-$personne = $em->find('CCIRamScoBundle:Personne', $id);
-      
-if (!$personne) {throw new NotFoundHttpException("Adhérent non trouvé");}
-      
-$em->remove($personne);
-$em->flush();        
+foreach ($listActivite as $activite) {$activite->getContenu();}
+		
+$content = $this->get('templating')
+->render('CCIRamScoBundle:Yasmina:indexPerso.html.twig', 
+array('listActivite' => $listActivite));
+return new Response($content);
 
-return new RedirectResponse($this->get('router')->generate('admin'));
-}
-
-	public function delparticipantAction($id)
-	{
-$em = $this->getDoctrine()->getManager();
-$participant = $em->find('CCIRamScoBundle:Participant', $id);
-      
-if (!$participant) {throw new NotFoundHttpException("Participant non trouvé");}
-      
-$em->remove($participant);
-$em->flush();        
-
-return new RedirectResponse($this->get('router')->generate('admin'));
-}
-
-	public function delroleAction($id)
-	{
-$em = $this->getDoctrine()->getManager();
-$role = $em->find('CCIRamScoBundle:Role', $id);
-      
-if (!$role) {throw new NotFoundHttpException("Rôle non trouvé");}
-      
-$em->remove($role);
-$em->flush();        
-
-return new RedirectResponse($this->get('router')->generate('admin'));
-}
-    
+    }
     
     public function editadherentAction(Request $request, $id=null)
 	{
@@ -146,14 +92,16 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Adhérent modifié avec succès !';}
 	else{$message='Adhérent ajouté avec succès !';}
   
-    return $this->redirect($this->generateUrl('adherent_view', array('id' => $personne->getId(), 'personne' => $personne)));
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editadherent.html.twig', 
 array('form' => $form->createView(),'message'=>$message));
 }
    
+	//Page ajout d'un Participant
 	public function editparticipantAction(Request $request)
+	
 	{
 
 /*
@@ -206,7 +154,7 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Participant modifié avec succès !';}
 	else{$message='Participant ajouté avec succès !';}
   
-	return $this->redirect($this->generateUrl('participant_view', array('id' => $participant->getId(), 'participant' => $participant)));
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editparticipant.html.twig', 
@@ -236,12 +184,13 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Activité modifiée avec succès !';}
 	else{$message='Activité ajoutée avec succès !';}
   
-	return $this->redirect($this->generateUrl('activite_view', array('id'=>$activite->getId(), 'activite' => $activite)));
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editactivite.html.twig', 
 array('form' => $form->createView(),'message'=>$message));
 }
+
 
 	public function editroleAction(Request $request, $id=null)
 	{
@@ -264,7 +213,7 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Rôle modifié avec succès !';}
 	else{$message='Rôle ajouté avec succès !';}
   
-    return $this->redirect($this->generateUrl('role_view', array('id' => $role->getId(), 'role' => $role)));
+  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editrole.html.twig', 
@@ -297,6 +246,12 @@ public function farymAction()
 	return $this->render('CCIRamScoBundle:Yasmina:farym.html.twig');
     }
 
+//Page association
+public function associationAction()
+{
+	return $this->render('CCIRamScoBundle:Yasmina:association.html.twig');
+    }
+    
 //Zone administrateur
 public function adminAction()
 {
