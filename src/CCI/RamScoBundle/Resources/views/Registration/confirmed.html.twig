@@ -11,14 +11,11 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Félécitation {{user.username}}, votre compte à bien été créé.</h2>
+    <h2>Félicitations {{user.username}}, votre compte a bien été créé.</h2>
     <p>
 		<a href="http://localhost/Ramassage/web/app_dev.php/accueil">Retour à l'accueil</a>
     </p>
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
-    
-    
-
 {% endblock %}
