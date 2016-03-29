@@ -4,15 +4,41 @@
 	Ajout / Edition participants - {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	.formulaire {padding-left:10%;}
+	p{padding-left:5%;}
+
+	label::after {content: " :	";}
+	.form-control{width:auto; margin-left:2%;}
+	
+	
+</style>
+{% endblock %}
 
 {% block body %}
   <h2>Ajout / Edition d'un participant</h2>
 
 
   <p>Veuillez entrer les informations concernant le nouveau participant ou modifier celles du participant existant :</p>
-
+<div class="formulaire">
+{#Personne#}
+      {{ form_label(form.Personne, "Personne", {'label_attr': {'class': 'control-label'}}) }}
+      {{ form_errors(form.Personne) }}
+      {{ form_widget(form.Personne, {'attr': {'class': 'form-control'}}) }}
+      
+{#Rôle#}
+      {{ form_label(form.Role, "Rôle", {'label_attr': {'class': 'control-label'}}) }}
+      {{ form_errors(form.Role) }}
+      {{ form_widget(form.Role, {'attr': {'class': 'form-control'}}) }}
+      
+{#Activité#}
+      {{ form_label(form.Activite, "Activité", {'label_attr': {'class': 'control-label'}}) }}
+      {{ form_errors(form.Activite) }}
+      {{ form_widget(form.Activite, {'attr': {'class': 'form-control'}}) }}
 
   {{ form(form) }}
-
+</div>
 
 {% endblock %}
