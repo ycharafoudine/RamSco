@@ -15,9 +15,9 @@ class RoleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeRole')
-            ->add('fonction')
-            ->add('enregistrer','submit')
+            ->add('typeRole', 'text', array( 'attr'=>array('class'=>'form-control')))
+            ->add('fonction', 'textarea', array( 'attr'=>array('class'=>'form-control')))
+            ->add('enregistrer','submit', array( 'attr'=>array('class'=>'btn btn-default', 'value'=>'Enregistrer')))
         ;
     }
     
