@@ -10,16 +10,16 @@
 {{ parent() }}
 <style>
 	label::after {content: " :	";}
-
+	.page {width:60; margin-left: 20%; margin-right: 20%;}
 </style>
 {% endblock %}
 
 {% block body %}
   <h2>Ajout / Edition d'un adhérent</h2>
 
-
+<div class="page">
   <p>Veuillez entrer les informations concernant le nouvel adhérent ou modifier l'adhérent déjà existant :</p>
-<div class="form-group col-sm-4">
+<div class="form-group col-sm-6">
 {#Nom#}
       {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'control-label'}}) }}
       {{ form_errors(form.nom) }}
@@ -46,5 +46,6 @@
       {{ form_widget(form.telephone, {'attr': {'class': 'form-control',  'placeholder': "01 234 567", 'type': 'tel'}}) }}
 
   {{ form(form) }}
+</div>
 </div>
 {% endblock %}

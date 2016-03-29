@@ -27,7 +27,7 @@ class ParticipantType extends AbstractType
 				'class'    => 'CCIRamScoBundle:Activite',
 				'property' => 'titreActivite',
 				'multiple' => true))
-			->add('enregistrer','submit')
+			->add('enregistrer','submit', array( 'attr'=>array('class'=>'btn btn-default', 'value'=>'Enregistrer')))
         ;
     }
     

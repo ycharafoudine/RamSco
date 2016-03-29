@@ -21,11 +21,11 @@
       {{ form_errors(form.prenom) }}
       {{ form_widget(form.prenom, {'attr': {'class': 'form-control',  'placeholder': "Prénom"}}) }}
 
+
 {#Date de naissance#}
 	  {{ form_label(form.dateNaissance, "Date de naissance", {'label_attr': {'class': 'control-label'}}) }}
 	  {{ form_errors(form.dateNaissance) }}
-	  <input type="text" id="datepicker" name="form.dateNaissance" required="required" class="form-control" placeholder="20/07/1980">
-	  {{ form_widget(form.dateNaissance, {'attr': {'type':'hidden'}}) }}
+	  {{ form_widget(form.dateNaissance, {'attr': {'class': 'date_naissance'}}) }}
 		
 	<div class="YN">	
 {#Enfant#}
