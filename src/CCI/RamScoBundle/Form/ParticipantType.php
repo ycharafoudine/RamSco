@@ -18,15 +18,15 @@ class ParticipantType extends AbstractType
 			->add('Personne', 'entity', array(
 				'class'    => 'CCIRamScoBundle:Personne',
 				'property' => 'NomPrenom',
-				'multiple' => true))
+				'multiple' => false), array( 'attr'=>array('class'=>'form-control'), 'label_attr'=>array('class'=>'control-label')))
             ->add('Role', 'entity', array(
 				'class'    => 'CCIRamScoBundle:Role',
 				'property' => 'typeRole',
-				'multiple' => true))
+				'multiple' => false), array( 'attr'=>array('class'=>'form-control'), 'label_attr'=>array('class'=>'control-label')))
             ->add('Activite', 'entity', array(
 				'class'    => 'CCIRamScoBundle:Activite',
 				'property' => 'titreActivite',
-				'multiple' => true))
+				'multiple' => false), array( 'attr'=>array('class'=>'form-control'), 'label_attr'=>array('class'=>'control-label')))
 			->add('enregistrer','submit', array( 'attr'=>array('class'=>'btn btn-default', 'value'=>'Enregistrer')))
         ;
     }
