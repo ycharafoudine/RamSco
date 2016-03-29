@@ -18,7 +18,7 @@ class ActiviteType extends AbstractType
             ->add('titreActivite','text')
 			->add('theme','text')
 			->add('lieu','text')
-			->add('dateActivite','datetime')
+			->add('dateActivite','datetime', array('format'=>'dd/MM/yyyy H:i:s'))
 			->add('fournitures','text')
 			->add('enregistrer','submit')
             
