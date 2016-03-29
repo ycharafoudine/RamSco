@@ -10,19 +10,23 @@
 	th{width: 100px;}
 	.gly {width: 30px;}
 	.adresse {width: 200px;}
+	.description {width: 500px;}
+	.activite, .role {width: 150px;}
 	a {color:#AA0000;}
 	a:hover, a:active {color:#730000; text-decoration: none;}
-	.glyphicon-plus{color:#018800;}
+	.glyphicon-plus{color:#018800; margin-top:15px;margin-bottom:50px;}
+	.interface {width: 60%; margin-left: 20%; margin-right: 20%;}
+	.nav-pills > li.active > a, .nav-pills > li.active > a:active, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {background-color: #AA0000;}
+	.nav-pills > li > a:hover  {background-color: #FFA500;}
 	
 </style>
 {% endblock %}
-
 {% block body %}
 
 
-<div class="container">
+<div class="interface">
 
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-pills">
     <li class="active"><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
     <li><a data-toggle="tab" href="#participants">Gestion des participants</a></li>
     <li> <a data-toggle="tab" href="#activites">Gestion des activités</a></li>
@@ -36,24 +40,24 @@
 		<thead>
 			<tr>
 				<th class="gly"></th>
+				<th class="gly"></th>
+				<th class="gly"></th>
 				<th>N°</th>
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th class="adresse">Adresse</th>
 				<th>Téléphone</th>
-				<th class="gly"></th>
-				<th class="gly"></th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for personne in listAdherent %}
 					<tr>
 						<td> <a href="/admin/adherent/{{ personne.id }}"><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Info"></span></a></td>
+						<td> <a href="/admin/adherent/edit/{{ personne.id }}"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Modifier"></span></a></td>
+						<td> <a href="/admin/adherent/remove/{{ personne.id }}"><span class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Supprimer"></span></a></td>
 						<td> {{ personne.numAdherent }}</td>
 						<td> {{ personne.nom }}</td><td> {{ personne.prenom }} </td>
 						<td> {{ personne.adresse }} </td><td> {{ personne.telephone }} </td>
-						<td> <a href="/admin/adherent/edit/{{ personne.id }}"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Modifier"></span></a></td>
-						<td> <a href="/admin/adherent/remove/{{ personne.id }}"><span class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Supprimer"></span></a></td>
 					</tr>
 			{% endfor %}
 		</tbody>
@@ -61,7 +65,7 @@
 		<a href="/admin/adherent/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un adhérent</a>
 	</div>
 	
-    <div id="participants" class="tab-pane fade in active">
+    <div id="participants" class="tab-pane fade">
 		<h2>Liste des participants</h2>
 		<table>
 		<thead>
@@ -70,7 +74,7 @@
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Rôle</th>
-				<th>Activité</th>
+				<th class="activite">Activité</th>
 				<th class="gly"></th>
 				<th class="gly"></th>
 			</tr>
@@ -93,15 +97,15 @@
 
     </div>
     
-     <div id="activites" class="tab-pane fade in active">
+     <div id="activites" class="tab-pane fade">
 		<h2>Liste des activités</h2>
 		<table>
 		<thead>
 			<tr>
 				<th class="gly"></th>
 				<th>Date</th>
-				<th>Titre Activité</th>
-				<th>Lieu</th>
+				<th class="activite">Titre Activité</th>
+				<th class="adresse">Lieu</th>
 				<th class="gly"></th>
 				<th class="gly"></th>
 			</tr>
@@ -124,14 +128,14 @@
 		
     </div>
     
-    <div id="roles" class="tab-pane fade in active">
+    <div id="roles" class="tab-pane fade">
 		<h2>Liste des rôles</h2>
 		<table>
 		<thead>
 			<tr>
 				<th class="gly"></th>
-				<th>Type Rôles</th>
-				<th>Description</th>
+				<th class="role">Type Rôles</th>
+				<th class="description">Description</th>
 				<th class="gly"></th>
 				<th class="gly"></th>
 			</tr>
@@ -154,6 +158,6 @@
 	
   </div>
 </div>
-<br><br><br>
+
 		
 {% endblock %}
