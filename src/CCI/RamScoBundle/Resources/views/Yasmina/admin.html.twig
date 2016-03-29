@@ -105,8 +105,10 @@
 			<tr>
 				<th class="gly"></th>
 				<th>Date</th>
+				<th class="activite">Thème</th>
 				<th class="activite">Titre Activité</th>
 				<th class="adresse">Lieu</th>
+				<th class="activite">Fournitures</th>
 				<th class="gly"></th>
 				<th class="gly"></th>
 			</tr>
@@ -116,8 +118,10 @@
 					<tr>
 						<td> <a href="/admin/activite/{{ activite.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
 						<td> {{ activite.stringdateActivite }}</td>
+						<td> {{ activite.theme }}</td>
 						<td> {{ activite.titreActivite }} </td>
 						<td> {{ activite.lieu }} </td>
+						<td> {{ activite.fournitures }} </td>
 						<td> <a href="/admin/activite/edit/{{ activite.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
 						<td> <a href="/admin/activite/remove/{{ activite.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
@@ -159,6 +163,8 @@
 	
   </div>
 </div>
+
+
 
 		
 {% endblock %}

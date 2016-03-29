@@ -11,9 +11,9 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('nom')
-        ->add('prenom')
-        ->add('adresse')
+        ->add('nom', 'text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Nom"), 'label_attr'=>array('class'=>'control-label')))
+        ->add('prenom', 'text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Préom"), 'label_attr'=>array('class'=>'control-label')))
+        ->add('adresse', 'text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Adresse"), 'label_attr'=>array('class'=>'control-label')))
         ->add('enfants', 'choice', array(
               'choices' => array('Oui' => true, 'Non' => false),
               'choices_as_values' => true,
@@ -22,7 +22,7 @@ class RegistrationType extends AbstractType
               ))
         ->add('dateNaissance', 'birthday', array('format'=>'dd/MM/yyyy', 'placeholder' => array(
 																	'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour')))
-        ->add('telephone')
+        ->add('telephone', 'number', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"01 234 567"), 'label_attr'=>array('class'=>'control-label')))
         ->add('permis', 'choice', array(
               'choices' => array('Oui' => true, 'Non' => false),
               'choices_as_values' => true,
