@@ -11,6 +11,7 @@ use CCI\RamScoBundle\Entity\Activite;
 use CCI\RamScoBundle\Form\ActiviteType;
 use CCI\RamScoBundle\Form\ParticipantType;
 use CCI\RamScoBundle\Form\RoleType;
+use CCI\RamScoBundle\Form\RegistrationType;
 use CCI\RamScoBundle\Form\ProfileEditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGenerator;
