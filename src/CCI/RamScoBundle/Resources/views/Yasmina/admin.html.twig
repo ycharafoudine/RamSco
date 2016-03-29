@@ -4,6 +4,18 @@
 	Interface administrateur - {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	th{width: 100px;}
+	.gly {width: 30px;}
+	.adresse {width: 200px;}
+	a {color:#AA0000;}
+	a:hover, a:active {color:#730000; text-decoration: none;}
+	.glyphicon-plus{color:#018800;}
+	
+</style>
+{% endblock %}
 
 {% block body %}
 
@@ -11,7 +23,7 @@
 <div class="container">
 
   <ul class="nav nav-tabs">
-    <li  class="active"><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
+    <li class="active"><a data-toggle="tab" href="#adherents">Gestion des adhérents</a></li>
     <li><a data-toggle="tab" href="#participants">Gestion des participants</a></li>
     <li> <a data-toggle="tab" href="#activites">Gestion des activités</a></li>
     <li><a data-toggle="tab" href="#roles">Gestion des rôles</a></li>
@@ -20,21 +32,30 @@
   <div class="tab-content">
     <div id="adherents" class="tab-pane fade in active">
 		<h2>Liste des adhérents</h2>
-		<table border="1">
+		<table>
 		<thead>
-			<tr><th></th><th>N°</th><th>Nom</th><th>Prénom</th><th>Adresse</th><th>Téléphone</th><th>Modif</th><th>Suppr</th></tr>
+			<tr>
+				<th class="gly"></th>
+				<th>N°</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th class="adresse">Adresse</th>
+				<th>Téléphone</th>
+				<th class="gly"></th>
+				<th class="gly"></th>
+			</tr>
 		</thead>
 		<tbody>
-		{% for personne in listAdherent %}
+			{% for personne in listAdherent %}
 					<tr>
-						<td> <a href="/admin/adherent/{{ personne.id }}"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+						<td> <a href="/admin/adherent/{{ personne.id }}"><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Info"></span></a></td>
 						<td> {{ personne.numAdherent }}</td>
 						<td> {{ personne.nom }}</td><td> {{ personne.prenom }} </td>
 						<td> {{ personne.adresse }} </td><td> {{ personne.telephone }} </td>
-						<td> <a href="/admin/adherent/edit/{{ personne.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
-						<td> <a href="/admin/adherent/remove/{{ personne.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+						<td> <a href="/admin/adherent/edit/{{ personne.id }}"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Modifier"></span></a></td>
+						<td> <a href="/admin/adherent/remove/{{ personne.id }}"><span class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" title="Supprimer"></span></a></td>
 					</tr>
-				  {% endfor %}
+			{% endfor %}
 		</tbody>
 		</table>
 		<a href="/admin/adherent/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un adhérent</a>
@@ -42,12 +63,20 @@
 	
     <div id="participants" class="tab-pane fade in active">
 		<h2>Liste des participants</h2>
-		<table border="1">
+		<table>
 		<thead>
-			<tr><th></th><th>Nom</th><th>Prénom</th><th>Rôle</th><th>Activité</th><th>Modif</th><th>Suppr</th></tr>
+			<tr>
+				<th class="gly"></th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Rôle</th>
+				<th>Activité</th>
+				<th class="gly"></th>
+				<th class="gly"></th>
+			</tr>
 		</thead>
 		<tbody>
-		{% for participant in listParticipant %}
+			{% for participant in listParticipant %}
 					<tr>
 						<td> <a href="/admin/participant/{{ participant.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
 						<td> {{ participant.personne.nom }}</td>
@@ -57,7 +86,7 @@
 						<td> <a href="/admin/participant/edit/{{ participant.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
 						<td> <a href="/admin/participant/remove/{{ participant.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
-				  {% endfor %}
+			{% endfor %}
 		</tbody>
 		</table>
 		<a href="/admin/participant/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un participant</a>
@@ -66,12 +95,19 @@
     
      <div id="activites" class="tab-pane fade in active">
 		<h2>Liste des activités</h2>
-		<table border="1">
+		<table>
 		<thead>
-			<tr><th></th><th>Date</th><th>Titre Activité</th><th>Lieu</th><th>Modif</th><th>Suppr</th></tr>
+			<tr>
+				<th class="gly"></th>
+				<th>Date</th>
+				<th>Titre Activité</th>
+				<th>Lieu</th>
+				<th class="gly"></th>
+				<th class="gly"></th>
+			</tr>
 		</thead>
 		<tbody>
-		{% for activite in listActivite %}
+			{% for activite in listActivite %}
 					<tr>
 						<td> <a href="/admin/activite/{{ activite.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
 						<td> {{ activite.stringdateActivite }}</td>
@@ -80,7 +116,7 @@
 						<td> <a href="/admin/activite/edit/{{ activite.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
 						<td> <a href="/admin/activite/remove/{{ activite.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
-				  {% endfor %}
+			{% endfor %}
 		</tbody>
 		</table>
 		<a href="/admin/activite/add"><span class="glyphicon glyphicon-plus"></span> Planifier une activité</a>
@@ -90,12 +126,18 @@
     
     <div id="roles" class="tab-pane fade in active">
 		<h2>Liste des rôles</h2>
-		<table border="1">
+		<table>
 		<thead>
-			<tr><th></th><th>Type Rôles</th><th>Description</th><th>Modif</th><th>Suppr</th></tr>
+			<tr>
+				<th class="gly"></th>
+				<th>Type Rôles</th>
+				<th>Description</th>
+				<th class="gly"></th>
+				<th class="gly"></th>
+			</tr>
 		</thead>
 		<tbody>
-		{% for role in listRole %}
+			{% for role in listRole %}
 					<tr>
 						<td> <a href="/admin/role/{{ role.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
 						<td> {{ role.typeRole }} </td>
@@ -103,7 +145,7 @@
 						<td> <a href="/admin/role/edit/{{ role.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
 						<td> <a href="/admin/role/remove/{{ role.id }}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					</tr>
-				  {% endfor %}
+			{% endfor %}
 		</tbody>
 		</table>
 		<a href="/admin/role/add"><span class="glyphicon glyphicon-plus"></span> Ajouter un rôle</a>
@@ -112,9 +154,6 @@
 	
   </div>
 </div>
-<br />
-<br />
-<br />
-<br />
+<br><br><br>
 		
 {% endblock %}
