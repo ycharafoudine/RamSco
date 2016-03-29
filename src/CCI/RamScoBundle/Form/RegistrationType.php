@@ -14,6 +14,7 @@ class RegistrationType extends AbstractType
         ->add('nom')
         ->add('prenom')
         ->add('adresse')
+        ->add('email')
         ->add('enfants', 'choice', array(
               'choices' => array('Oui' => true, 'Non' => false),
               'choices_as_values' => true,
@@ -76,6 +77,11 @@ class RegistrationType extends AbstractType
     }
     
     public function getPermis()
+    {
+        return $this->getBlockPrefix();
+    }
+    
+        public function getEmail()
     {
         return $this->getBlockPrefix();
     }
