@@ -79,7 +79,7 @@ class Activite
     {
 		if($this->dateActivite!=null)
 			{$date = $this->dateActivite;
-			$result=$date->format('d/m/Y H:i:s');}
+			$result=$date->format('d/m/Y H:i');}
 		else{$result = "Date non fixée";}
         return $result;
     }

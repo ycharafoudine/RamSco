@@ -15,12 +15,21 @@ class ActiviteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+<<<<<<< HEAD
             ->add('titreActivite','text')
 			->add('theme','text')
 			->add('lieu','text')
 			->add('dateActivite','datetime', array('format'=>'dd/MM/yyyy H:i:s'))
 			->add('fournitures','text')
 			->add('enregistrer','submit')
+=======
+            ->add('titreActivite','text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Titre de l'activité"), 'label_attr'=>array('class'=>'control-label')))
+			->add('theme','text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Thème"), 'label_attr'=>array('class'=>'control-label')))
+			->add('lieu','text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Lieu"), 'label_attr'=>array('class'=>'control-label')))
+			->add('dateActivite','datetime', array( 'attr'=>array('class'=>'date')))
+			->add('fournitures','text', array( 'attr'=>array('class'=>'form-control',  'placeholder'=>"Fournitures"), 'label_attr'=>array('class'=>'control-label')))
+			->add('enregistrer','submit', array( 'attr'=>array('class'=>'btn btn-default', 'value'=>'Enregistrer')))
+>>>>>>> refs/remotes/origin/master
             
         ;
     }
