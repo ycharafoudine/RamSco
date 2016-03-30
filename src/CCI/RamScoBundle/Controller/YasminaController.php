@@ -93,7 +93,7 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Adhérent modifié avec succès !';}
 	else{$message='Adhérent ajouté avec succès !';}
   
-  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+  return $this->redirect($this->generateUrl('admin'));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editadherent.html.twig', 
@@ -155,7 +155,7 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Participant modifié avec succès !';}
 	else{$message='Participant ajouté avec succès !';}
   
-  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+	return $this->redirect($this->generateUrl('admin'));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editparticipant.html.twig', 
@@ -185,7 +185,7 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Activité modifiée avec succès !';}
 	else{$message='Activité ajoutée avec succès !';}
   
-  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+ return $this->redirect($this->generateUrl('admin'));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editactivite.html.twig', 
@@ -214,7 +214,7 @@ if ($form->handleRequest($request)->isValid()) {
 	if (isset($id)){$message='Rôle modifié avec succès !';}
 	else{$message='Rôle ajouté avec succès !';}
   
-  //return $this->redirect($this->generateUrl('activite_view', array('id' => $activite->getId())));
+  return $this->redirect($this->generateUrl('admin'));
 }
 	
 return $this->render('CCIRamScoBundle:Yasmina:editrole.html.twig', 
