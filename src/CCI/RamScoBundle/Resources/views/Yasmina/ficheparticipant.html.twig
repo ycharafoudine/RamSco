@@ -5,16 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    
-
+		<a href="/admin">Retour</a>
         <h2>{{ participant.personne.nomprenom }}</h2>
-
-		
-			<p>Rôle : {{ participant.role.typerole }}<br />
-			Activite : {{ participant.activite.titreactivite }}<br />
-			Date / Heure : {{ participant.activite.stringdateactivite }}<br />
-			</p>
-
-        </p>
-
+			<p>Rôle : {{ participant.role.typerole }}</p>
+			<p>Activite : {{ participant.activite.titreactivite }}</p>
+			<p>Date / Heure : {{ participant.activite.stringdateactivite }}</p>
 {% endblock %}

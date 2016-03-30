@@ -5,15 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    
-
+<a href="/admin">Retour</a>
         <h2>{{ activite.titreActivite }}</h2>
-
-		
-			<p>Lieu : {{ activite.lieu }}<br />
-			Date et Heure: {{ activite.stringdateactivite }}<br />
-			Fournitures : {{ activite.fournitures }}<br />
-			Coût : {{ activite.cout }}<br />
-			</p>
-
+			<p>Lieu : {{ activite.lieu }}</p>
+			<p>Date et Heure: {{ activite.stringdateactivite }}</p>
+			<p>Fournitures : {{ activite.fournitures }}</p>
+			<p>Coût : {{ activite.cout }}</p>
 {% endblock %}
