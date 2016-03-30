@@ -43,9 +43,9 @@
 				<ul>
 				
 				  {% for activite in listActivite %}
-					<li>{{ activite.contenu }}</li>
+					<li>  <a href="/activite/{{ activite.id }}"> {{ activite.contenu }} </a></li>
 				  {% else %}
-					<li>Pas d'actualité trouvé.</li>
+					<li>Pas d'actualité trouvée.</li>
 				  {% endfor %}
 				</ul>
 				

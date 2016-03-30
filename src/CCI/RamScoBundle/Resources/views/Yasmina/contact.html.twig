@@ -11,7 +11,7 @@
 	body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
-      color: #818181;
+      color: black;
   }
   h2 {
       font-size: 24px;
@@ -20,11 +20,9 @@
       font-weight: 600;
       margin-bottom: 30px;
   }
-  .bg-grey {
-      background-color: #f6f6f6;
-  }
-
-	
+ p {
+     align:center
+ }
 </style>
 {% endblock %}
 
@@ -34,26 +32,29 @@
 	<div id="contact" class="container-fluid bg-grey">
 	  <h2 class="text-center">CONTACT</h2>
 	  <div class="row">
-		<div class="col-sm-5">
-		  <p>N'hésitez pas à nous contacter</p>
+		<div>
+                    
+                     <p> Si vous voulez: </p>
+                        <br/>
+                        
+  
+                            <ul> 
+                           <li> En savoir plus et avoir d'avantage de renseignements</li>
+                           <li>Être bénévole</li>
+                           <li>Vous inscrire ou inscrire votre enfant à une activité </li>
+                           </ul>
+                          <br/>
+                         
+                     
+
+                <p>N'hésitez pas à nous contacter: </p>      	  
 		  <p><span class="glyphicon glyphicon-map-marker"></span> Tours 37000</p>
 		  <p><span class="glyphicon glyphicon-phone"></span> +33 007 36 15</p>
 		  <p><span class="glyphicon glyphicon-envelope"></span> <a href="contact@farym.com">contact@farym.com</a></p>    
 		</div>
-		<div class="col-sm-7 slideanim">
-		  <div class="row">
-			<div class="col-sm-6 form-group">
-			  <input class="form-control" id="Nom" name="Nom" placeholder="Nom" type="text" required>
-			</div>
-			<div class="col-sm-6 form-group">
-			  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-			</div>
-		  </div>
-		  <textarea class="form-control" id="Message" name="Message" placeholder="Message" rows="5"></textarea><br>
-		  <div class="row">
-			<div class="col-sm-12 form-group">
-			  <button class="btn btn-default pull-right" type="submit">Envoyer</button>
-			</div>
+		
+		  
+                            
 		  </div>  
 		</div>
 	  </div>
