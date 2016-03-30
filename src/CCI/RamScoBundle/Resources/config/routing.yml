@@ -105,10 +105,14 @@ activite_edit:
         id: \d+
            
 activite_view:
-    path: admin/activite/{id}
+    path: activite/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:ficheactivite }
     requirements : 
         id: \d+
+        
+activite_liste:    
+    path: listeactivites
+    defaults: { _controller: CCIRamScoBundle:Yasmina:listeactivites }
 
 
 

@@ -1,0 +1,68 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Liste activités - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+		th{width: 100px;}
+	.gly {width: 30px;}
+	.adresse {width: 200px;}
+	.description {width: 500px;}
+	.activite, .role {width: 150px;}
+	a {color:#AA0000;}
+	a:hover, a:active {color:#730000; text-decoration: none;}
+	.glyphicon-plus{color:#018800; margin-top:15px;margin-bottom:50px;}
+	.interface {width: 60%; margin-left: 20%; margin-right: 20%; margin-top:30px;}
+	.nav-pills > li.active > a, .nav-pills > li.active > a:active, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {background-color: #AA0000;}
+	.nav-pills > li > a:hover  {background-color: #FFA500;}
+	table tr:nth-child(even){background-color:white;}
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+		<h2>Liste des activités</h2>
+		<table>
+		<thead>
+			<tr>
+				<th class="gly"></th>
+				<th>Date</th>
+				<th class="activite">Thème</th>
+				<th class="activite">Titre Activité</th>
+				<th class="adresse">Lieu</th>
+				<th class="activite">Fournitures</th>
+				<th class="gly"></th>
+				<th class="gly"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for activite in listActivite %}
+					<tr>
+						<td> <a href="/activite/{{ activite.id }}"><span class="glyphicon glyphicon-info-sign"></a></td>
+						<td> {{ activite.stringdateActivite }}</td>
+						<td> {{ activite.theme }}</td>
+						<td> {{ activite.titreActivite }} </td>
+						<td> {{ activite.lieu }} </td>
+						<td> {{ activite.fournitures }} </td>
+					</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+
+		
+		
+    </div>
+
+	</div>
+	
+  </div>
+</div>
+
+
+
+		
+{% endblock %}

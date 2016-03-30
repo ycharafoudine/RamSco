@@ -272,6 +272,14 @@ array('listActivite' => $listActivite, 'listAdherent' => $listAdherent,
 return new Response($content);
 	//return $this->render('CCIRamScoBundle:Yasmina:admin.html.twig');
     }
+    
+public function listeactivitesAction (){
+$repAc = $this->getDoctrine()->getManager()->getRepository('CCIRamScoBundle:Activite');
+$listActivite = $repAc->myfindAll();
+$content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:listeactivites.html.twig', 
+array('listActivite' => $listActivite));
+return new Response($content);
+	}
 }
 	
 	
