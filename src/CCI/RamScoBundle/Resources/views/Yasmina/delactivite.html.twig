@@ -1,0 +1,32 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajout / Edition activité - {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	.formulaire {padding-left:10%;}
+	p{padding-left:5%;}
+
+	label::after {content: " :	";}
+	.form-control{width:auto; margin-left:2%;}
+	
+	.date{margin-left:2%; margin-bottom:10px;}
+	
+</style>
+{% endblock %}
+
+{% block body %}
+  <h2>Ajout / Edition d'une activite</h2>
+
+
+  <p>Veuillez saisir les informations concernant la nouvelle activité ou modifier l'activité déjà existante :</p>
+
+<div class="formulaire">
+  {{ form(form) }}
+</div>
+
+
+
+{% endblock %}
