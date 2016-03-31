@@ -280,6 +280,57 @@ $content = $this->get('templating')->render('CCIRamScoBundle:Yasmina:listeactivi
 array('listActivite' => $listActivite));
 return new Response($content);
 	}
+	
+
+
+public function deladherentAction($id)
+{
+  $em = $this->getDoctrine()->getManager();
+  $personne = $em->find('CCIRamScoBundle:Personne', $id);
+        
+  if (!$personne)  {throw new NotFoundHttpException("Adhérent non trouvé");}
+  $em->remove($personne);
+  $em->flush();        
+
+ return $this->redirect($this->generateUrl('admin'));
+}
+
+public function delroleAction($id)
+{
+  $em = $this->getDoctrine()->getManager();
+  $role = $em->find('CCIRamScoBundle:Role', $id);
+        
+  if (!$role)  {throw new NotFoundHttpException("Rôle non trouvé");}
+  $em->remove($role);
+  $em->flush();        
+
+ return $this->redirect($this->generateUrl('admin'));
+}
+
+public function delparticipantAction($id)
+{
+  $em = $this->getDoctrine()->getManager();
+  $participant = $em->find('CCIRamScoBundle:Participant', $id);
+        
+  if (!$participant)  {throw new NotFoundHttpException("Participant non trouvé");}
+  $em->remove($participant);
+  $em->flush();        
+
+ return $this->redirect($this->generateUrl('admin'));
+}
+
+public function delactiviteAction($id)
+{
+  $em = $this->getDoctrine()->getManager();
+  $activite = $em->find('CCIRamScoBundle:Activite', $id);
+        
+  if (!$activite)  {throw new NotFoundHttpException("Activité non trouvée");}
+  $em->remove($activite);
+  $em->flush();        
+
+ return $this->redirect($this->generateUrl('admin'));
+}
+
 }
 	
 	

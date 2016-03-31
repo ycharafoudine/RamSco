@@ -52,6 +52,12 @@ adherent_edit:
     path: admin/adherent/edit/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:editadherent }
     
+adherent_del:    
+    path: admin/adherent/remove/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:deladherent }
+    requirements : 
+        id: \d+
+    
 adherent_view:    
     path: admin/adherent/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:ficheadherent }
@@ -66,6 +72,12 @@ participant_add:
 participant_edit:    
     path: admin/participant/edit/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:editparticipant }
+    requirements : 
+        id: \d+
+        
+participant_del:    
+    path: admin/participant/remove/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:delparticipant }
     requirements : 
         id: \d+
         
@@ -86,6 +98,12 @@ role_edit:
     requirements : 
         id: \d+
         
+role_del:    
+    path: admin/role/remove/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:delrole }
+    requirements : 
+        id: \d+
+        
 role_view:
     path: admin/role/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:ficherole }
@@ -101,6 +119,12 @@ activite_add:
 activite_edit:    
     path: admin/activite/edit/{id}
     defaults: { _controller: CCIRamScoBundle:Yasmina:editactivite }
+    requirements : 
+        id: \d+
+        
+activite_del:    
+    path: admin/activite/remove/{id}
+    defaults: { _controller: CCIRamScoBundle:Yasmina:delactivite }
     requirements : 
         id: \d+
            

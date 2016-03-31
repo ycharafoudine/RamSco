@@ -1,0 +1,29 @@
+{% extends "CCIRamScoBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajout / Edition participants - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+	.formulaire {padding-left:10%;}
+	p{padding-left:5%;}
+
+	label::after {content: " :	";}
+	.form-control{width:auto; margin-left:2%;}
+	
+	
+</style>
+{% endblock %}
+
+{% block body %}
+  <h2>Ajout / Edition d'un participant</h2>
+
+
+  <p>Veuillez entrer les informations concernant le nouveau participant ou modifier celles du participant existant :</p>
+<div class="formulaire">
+  {{ form(form) }}
+</div>
+
+{% endblock %}
